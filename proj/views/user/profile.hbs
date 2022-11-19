@@ -1,0 +1,25 @@
+<h1>{{userFromDB.name}} Profile</h1>
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <hr>
+        <h2>{{userFromDB.name}} {{userFromDB.lastName}}</h2>
+        <img src="{{userFromDB.image}}" class="card-img-top" alt="...">
+        <p><button type="button" class="btn btn-outline-secondary my-2">{{genre}}</button></p>
+        <p class="card-text">Plot: {{plot}}</p>
+        <p>Cast:</p>
+        <ul>
+            {{#each cast}}
+            <li>{{name}}</li>
+            {{/each}}
+        </ul>
+        <hr>
+        <a href="/profile/{{userFromDB._id}}/edit" class="btn btn-warning">Edit</a>
+
+        <form action="/profile/{{userFromDB._id}}/delete" method="POST" style="display: inline">
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+    </div>
+</div>

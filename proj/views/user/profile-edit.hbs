@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+            <h3>Profile Edit</h3>
+            <hr>
+
+            <form action="/profile/{{_id}}/edit" method="POST">
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailInput" name="email" value="{{email}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastName" value="{{lastName}}">
+                </div>
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Edit Profile</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
