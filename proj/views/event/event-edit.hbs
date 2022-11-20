@@ -1,0 +1,51 @@
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h1>Edit Event</h1>
+            <hr>
+            <form action="/event/{{_id}}/edit" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" value="{{title}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="creator" class="form-label">Creator</label>
+                            <input type="text" class="form-control" name="creator" value="{{creator}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="number" class="form-control" name="date" value="{{date}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="islandName" class="form-label">Island</label>
+                            <input type="number" class="form-control" name="islandName" value="{{islandName}}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" name="description" value="{{description}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventImg" class="form-label">Img</label>
+                        <input type="file" class="form-control" id="imageUrl" name="eventImg" value="{{eventImg}}">
+                    </div>
+                </div>
+                <div class="d-grid mt-5">
+                    <button type="submit" class="btn btn-dark btn-lg">Done</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

@@ -20,9 +20,11 @@ const userSchema = new Schema(
     },
     islandName: {
       type: String,
+      default: ''
     },
     fruit: {
       type: String,
+      default: ''
     },
     role: {
       type: String,

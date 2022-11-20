@@ -1,0 +1,43 @@
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h1>Create Event</h1>
+            <hr>
+            <form action="/event/create" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="number" class="form-control" name="date">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="creator" class="form-label">Creator</label>
+                            <input type="text" class="form-control" name="creator"
+                                value="{{currentUser.name}} {{currentUser.lastName}}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" name="description"></textarea>
+                    </div>
+                    {{!-- <div class="mb-3">
+                        <label for="eventImg" class="form-label">Img</label>
+                        <input type="file" class="form-control" id="imageUrl" name="eventImg">
+                    </div> --}}
+                </div>
+                <div class="d-grid mt-5">
+                    <button type="submit" class="btn btn-dark btn-lg">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -5,23 +5,28 @@
 
 # TABLE ROUTE 
 
-| Route                 | HTTP Verb | Description                    | JSON      |
-| --------------------- | --------- | -------------------------------|-----------|
-| `/home`               | GET       | Home                           |           |
-| `/wiki`               | GET       | Search for villagers           |           |
-| `/wiki/villagers`     | GET       | List of all villagers          |           |
-| `/wiki/villagers/:id` | GET       | Details of a specific villager  |           |
-| `/signup`             | GET       | Create a new user              |           |
-| `/signup`             | POST      | Create a new user              |           |
-| `/login`              | GET       | Log in form                    |           |
-| `/login`              | POST      | Log in form                    |           |
-| `/logout`             | GET       | Log out redirect Log In        |           |
-| `/profile/:id`         | GET       | Porfile details                 |           |
-| `/profile/:id/edit`    | GET       | Edit profile                    |           |
-| `/profile/:id/edit`    | POST      | Edit profile                    |           |
-| `/community`          | GET       | List of other users            |           |
-| `/event/:id`          | GET       | See event details              |           |
-| `/event/:id`          | GET       | See event details              |           |
+| Route                      | HTTP Verb | Description                   | JSON      |
+| -------------------------- | --------- | ------------------------------|-----------|
+| `/home`                    | GET       | Home                          |           |
+| `/wiki`                    | GET       | Search for villagers          |           |
+| `/wiki/villagers`          | GET       | List of all villagers         |           |
+| `/wiki/villagers/:id`      | GET       | Details of a specific villager |           |
+| `/signup`                  | GET       | Create a new user             |           |
+| `/signup`                  | POST      | Create a new user             |           |
+| `/login`                   | GET       | Log in form                   |           |
+| `/login`                   | POST      | Log in form                   |           |
+| `/logout`                  | GET       | Log out redirect Log In       |           |
+| `/profile/:id`              | GET       | Profile details                |           |
+| `/profile/:id/edit`         | GET       | Edit profile                   |           |
+| `/profile/:id/edit`         | POST      | Edit profile                   |           |
+| `/profile/:id/delete`       | POST      | Delete profile                 |           |
+| `/community`               | GET       | List of other users           |           |
+| `/event/create`            | GET       | Create event                  |           |
+| `/event/create`            | POST      | Create event                  |           |
+| `/event/:id`               | GET       | See event details             |           |
+| `/event/:id/edit`          | GET       | Edit event                    |           |
+| `/event/:id/edit`          | POST      | Edit event                    |           |
+| `/event/:id/delete`        | POST      | Delete event                  |           |
 
 
 # PANTALLAS 
@@ -37,14 +42,14 @@
 <!---------------------------->
 
 # SÁBADO
-- [ ] Tabla de rutas
-- [ ] Rutas de auth : log in
-- [ ] Rutas de auth : sign in
+- [ ✅ ] Tabla de rutas
+- [ ✅ ] Rutas de auth : log in
+- [ ✅ ] Rutas de auth : sign in
 
 # DOMINGO
-- [ ] Modelo de evento
-- [ ] Modelo de user
-- [ ] Pantalla de inicio
+- [ ✅ ] Modelo de evento
+- [ ✅ ] Modelo de user
+- [ ] CRUD de eventos
 - [ ] Empezar Nookipedia
 
 # LUNES
@@ -53,10 +58,10 @@
 <!---------------------------->
 
 # LOG IN
-- [ ] Formulario de inicio de sesion
+- [ ✅ ] Formulario de inicio de sesion
 
 # SIGN UP
-- [ ] Formulario de registro
+- [ ✅ ] Formulario de registro
 
 # INICIO
 - [ ] Ir a Nookipedia
@@ -68,10 +73,12 @@
 # NOOKIPEDIA
 - [ ] Barra de búsqueda para villagers
 - [ ] Poder filtrar por gender, personality & specie
+- [ ] Rutas de nookipedia
 
 # VILLAGERS PAGE
 - [ ] Lista de villagers
 - [ ] Poder darle click en un villager y ver su info
+- [ ] Rutas de villagers
 
 # VILLAGERS DETAILS
 - [ ] Card con la info del villager
@@ -81,12 +88,21 @@
 # PROFILE
 - [ ] Tener personajes favoritos
 - [ ] Poder poner los que tienes en tu isla
-- [ ] Crear eventos 
+- [ ] Boton de crear eventos 
 - [ ] Que se vean tus eventos eventos 
+- [ ] Rutas de profile
+
+# EVENTOS
+- [ ✅ ] Lista de eventos
+- [ ✅ ] Crear evento
+- [ ✅ ] Borrar evento
+- [ ✅ ] Editar evento
+- [ ] Rutas de eventos
 
 # COMMUNITY
 - [ ] Buscar a otros usuarios
 - [ ] Buscar eventos
+- [ ] Rutas de community
 
 # COMMUNITY DETAILS
 - [ ] Ver la info del usuario
@@ -97,7 +113,6 @@
 - [ ] Chat entre users
 - [ ] Validar amigo
 - [ ] Hacer nookipedia de animales
-- [ ] 
 
 
 
