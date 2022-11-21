@@ -8,9 +8,9 @@ module.exports = app => {
     const authRouter = require("./auth.routes")
     app.use("/", authRouter)
 
-    // User routes
-    const userRouter = require("./user.routes")
-    app.use("/profile", userRouter)
+    // Profile routes
+    const profileRouter = require("./profile.routes")
+    app.use("/profile", profileRouter)
 
     // Event routes
     const eventRouter = require("./event.routes")

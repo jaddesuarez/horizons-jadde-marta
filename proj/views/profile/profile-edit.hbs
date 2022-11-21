@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+            <h3>¡Hello {{username}}!</h3>
+            <h4>Edit your profile</h4>
+            <hr>
+            {{!-- User Keys --}}
+            {{!-- email, username, name, lastName, profileImg, islandName, fruit --}}
+
+            {{!-- /profile/{{userFromDB._id}}/edit --}}
+            <form action="/profile/{{_id}}/edit" method="POST">
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailInput" name="email" value="{{email}}">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastName" value="{{lastName}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="islandName" class="form-label">Island Name</label>
+                            <input type="text" class="form-control" id="islandName" name="islandName"
+                                value="{{islandName}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="fruit" class="form-label">Fruit</label>
+                            <input type="text" class="form-control" id="fuit" value="{{fruit}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Profile Image</label>
+                    <input type="file" class="form-control" id="imageUrl" name="imageField" value="{{profileImg}}">
+                </div>
+                <div class=" d-grid">
+                    <button type="submit" class="btn btn-dark">Done</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

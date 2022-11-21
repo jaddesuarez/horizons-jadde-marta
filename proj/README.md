@@ -1,4 +1,3 @@
-# BRANCH MARTA
 # PARA EL LUNES
 - [ ✅ ] Endpoints tabla de rutas
 - [ ✅ ] Hacer los modelos - roles
@@ -53,7 +52,8 @@
 - [ ] CRUD de eventos
 
 # LUNES
-- [ ] Nookipedia
+- [ ] Jadde: rutas de events
+- [ ] Marta: Pantalla de Profile
 
 <!---------------------------->
 
@@ -115,7 +115,7 @@
 - [ ] Hacer nookipedia de animales
 
 
-//TEST BRANCH JADDE
+
 
 
 

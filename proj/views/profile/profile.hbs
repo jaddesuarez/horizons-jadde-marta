@@ -1,0 +1,55 @@
+<h1>@{{userFromDB.username}}</h1>
+<h4>This is your Profile.</h4>
+<hr>
+<div class="card mb-3" style="">
+    <div class="row g-0">
+        <div class="col-md-5">
+            <div class="card-body" style="text-align: start">
+                <h5 class="card-title mb-3">{{userFromDB.name}} {{userFromDB.lastName}}</h5>
+                <p class="card-text"><strong>Username:</strong> {{userFromDB.username}}</p>
+                <p class="card-text"><strong>Email:</strong> {{userFromDB.email}}</p>
+                <p class="card-text"><strong>Island Name:</strong> {{userFromDB.islandName}}</p>
+                <p class="card-text"><strong>Fruit:</strong> {{userFromDB.fruit}}</p>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <img src="{{userFromDB.profileImg}}" class="img-fluid rounded-start" alt="profile image">
+        </div>
+    </div>
+</div>
+<hr>
+{{!-- VER TUS PERSONAJES --}}
+<h3><strong>Your Villagers</strong></h3>
+
+
+<hr>
+{{!-- VER TUS FAVORITOS --}}
+<h3><strong>Your Favourites</strong></h3>
+
+
+
+<hr>
+{{!-- VER TUS EVENTOS --}}
+<h3><strong>Your Events</strong></h3>
+{{#each event}}
+<div class="card mb-3">
+    <img src="{{eventImg}}" class="card-img-top" alt="Event image">
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text">{{description}}.</p>
+        <p class="card-text"><small class="text-muted">{{creator}}</small></p>
+        <p class="card-text"><small class="text-muted">{{date}}</small></p>
+    </div>
+</div>
+{{/each}}
+<hr>
+{{!-- BOTONES DE EDITAR Y BORRAR PERFIL --}}
+<div class="row">
+    <div class="col-md-6">
+        <a href="/profile/{{userFromDB._id}}/edit" class="btn btn-warning">Edit Profile</a>
+
+        <form action="/profile/{{userFromDB._id}}/delete" method="POST" style="display: inline">
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+    </div>
+</div>
