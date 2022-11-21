@@ -19,3 +19,22 @@ h1 {
   text-align: center;
   animation: showFromBottom 6s forwards;
 }
+
+.card {
+  background-color: #f6efe2;
+}
+
+.card-img-top {
+  border-radius: 50%;
+}
+
+.btn-primary {
+  --bs-btn-bg: #b8d8a4;
+  --bs-btn-border-color: #b8d8a4;
+  --bs-btn-hover-bg: #a6c294;
+  --bs-btn-hover-border-color: #93ad83;
+  --bs-btn-active-bg: #93ad83;
+  --bs-btn-active-border-color: #819773;
+  --bs-btn-disabled-bg: #b8d8a4;
+  --bs-btn-disabled-border-color: #b8d8a4;
+}

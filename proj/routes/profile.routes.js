@@ -8,6 +8,12 @@ const User = require('../models/User.model')
  `/profile/:id/edit`
  `/profile/:id/delete` */
 
+<<<<<<< HEAD:proj/routes/profile.routes.js
+=======
+
+// User details
+router.get('/:user_id', (req, res) => {
+>>>>>>> ca044ba7e7253a88081c11dc9d887262a179b5a8:proj/routes/user.routes.js
 
 // User details - Profile
 router.get('/:user_id', (req, res) => {

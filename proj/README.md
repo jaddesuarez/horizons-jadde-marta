@@ -117,8 +117,11 @@
 - [ ] Hacer nookipedia de animales
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> ca044ba7e7253a88081c11dc9d887262a179b5a8
 
 
