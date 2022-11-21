@@ -21,32 +21,17 @@ router.get('/', (req, res) => {
         .catch(err => console.log(err))
 })
 
-// // Event Details
-// router.get('/:event_id', (req, res) => {
-
-//     const { event_id } = req.params
-
-//     Event
-//         .findById(event_id)
-//         .populate('creator')
-//         .then(eventFromDB => {
-//             console.log(eventFromDB.creator)
-//             res.render('event/event-details', eventFromDB)
-//         })
-//         .catch(err => console.log(err))
-// })
-
 // Create Event (Render)
 router.get('/create', isLoggedIn, (req, res) => {
     res.render('event/new-event')
 })
 
-// Create Item (Handle)
+// Create Event (Handle)
 router.post('/create', (req, res) => {
 
     const creator = req.session.currentUser._id
     const { title, description, date } = req.body
-    console.log(`holiii`, creator)
+    // console.log(`holiii`, creator)
 
     Event
         .create({ title, description, creator, date })
@@ -60,12 +45,11 @@ router.post('/create', (req, res) => {
 
 
 // Edit Event (Render)
-router.get('/:event_id/edit', (req, res) => {
+router.get('/:event_id/edit', isLoggedIn, (req, res) => {
     const { event_id } = req.params
 
     Event
         .findById(event_id)
-        .populate('creator')
         .then(event => {
             res.render('event/event-edit', { event })
         })
@@ -74,25 +58,47 @@ router.get('/:event_id/edit', (req, res) => {
 
 
 // Edit Event (Handle)
-router.post('/:event_id/edit', (req, res) => {
-    const { title, description, creator, date } = req.body
+router.post('/:event_id/edit', isLoggedIn, (req, res) => {
+
+    const creator = req.session.currentUser._id
+    const { title, description, date } = req.body
     const { event_id } = req.params
 
     Event
         .findByIdAndUpdate(event_id, { title, description, creator, date })
-        .then(() => res.redirect(`event/${event_id}`))
+        .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
             console.log(err)
+            res.redirect(`/event/${event_id}/edit`)
         })
 })
 
 // Delete Item
 router.post('/:event_id/delete', (req, res) => {
     const { event_id } = req.params
+    const creatorId = req.session.currentUser._id
 
     Event
         .findByIdAndDelete(event_id)
-        .then(() => res.redirect('/'))
+        .then(() => res.redirect(`/event`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/event/${event_id}`)
+        })
+})
+
+// Event Details
+router.get('/:event_id', (req, res) => {
+
+    const { event_id } = req.params
+
+    Event
+        .findById(event_id)
+        .populate('creator')
+        .then(eventFromDB => {
+            console.log(eventFromDB.creator)
+            res.render('event/event-details', eventFromDB)
+        })
         .catch(err => console.log(err))
 })
 
