@@ -10,13 +10,13 @@ const { isLoggedOut } = require('../middleware/route-guard')
 
 
 // Signup form (render)
-router.get('/signup', (req, res) => {
+router.get('/signup', isLoggedOut, (req, res) => {
     res.render('auth/signup')
 })
 
 
 // Signup form (handle)
-router.post('/signup', (req, res) => {
+router.post('/signup', isLoggedOut, (req, res) => {
 
     const { email, username, name, plainPassword } = req.body
 
@@ -61,6 +61,7 @@ router.post('/login', (req, res) => {
                 return
             }
             req.session.currentUser = user
+            req.app.locals.currentUserId = user._id
             res.redirect('/')
         })
         .catch(err => console.log(err))

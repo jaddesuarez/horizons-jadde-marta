@@ -76,7 +76,6 @@ router.post('/:event_id/edit', isLoggedIn, (req, res) => {
 // Delete Item
 router.post('/:event_id/delete', (req, res) => {
     const { event_id } = req.params
-    const creatorId = req.session.currentUser._id
 
     Event
         .findByIdAndDelete(event_id)
