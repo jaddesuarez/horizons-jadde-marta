@@ -1,8 +1,23 @@
-<h1>holii</h1>
+<h1>Villagers</h1>
 
-{{#each villagers}}
-<p>
+<div class="row display:inline-block">
+    <div class="card" style="width: 18rem;">
+
+        {{#each villagers}}
+        <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{personality}}</p>
+            <a href="/wiki/{{name}}" class="btn btn-primary">See More</a>
+        </div>
+        <hr>
+        {{/each}}
+    </div>
+
+</div>
+
+
+{{!-- <p>
 <h4>{{name}}</h4>
 <a href="/wiki/{{name}}">See more</a>
-</p>
-{{/each}}
+</p> --}}

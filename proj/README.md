@@ -20,9 +20,9 @@
 | `/profile/:id/edit`         | GET       | Edit profile                   |           |    ✅    |
 | `/profile/:id/edit`         | POST      | Edit profile                   |           |    ✅    |
 | `/profile/:id/delete`       | POST      | Delete profile                 |           |    ✅    |
-| `/community`               | GET       | List of other users           |           |          |
-| `/event/create`            | GET       | Create event                  |           |          |
-| `/event/create`            | POST      | Create event                  |           |          |
+| `/community`               | GET       | List of other users           |           |    ✅    |
+| `/event/create`            | GET       | Create event                  |           |    ✅    |
+| `/event/create`            | POST      | Create event                  |           |    ✅    |
 | `/event/:id`               | GET       | See event details             |           |          |
 | `/event/:id/edit`          | GET       | Edit event                    |           |          |
 | `/event/:id/edit`          | POST      | Edit event                    |           |          |
@@ -57,24 +57,20 @@
 # NOOKIPEDIA
 - [ ] Barra de búsqueda para villagers
 - [ ] Poder filtrar por gender, personality & specie
-- [ ] Lista de villagers
-- [ ] Rutas de nookipedia
-
-# VILLAGERS PAGE
-- [ ] Lista de villagers
-- [ ] Poder darle click en un villager y ver su info
-- [ ] Rutas de villagers
+- [ ✅ ] Lista de villagers
+- [ ✅ ] Rutas de nookipedia
+- [ ✅ ] Poder darle click en un villager y ver su info
 
 # VILLAGERS DETAILS
-- [ ] Card con la info del villager
+- [ ✅ ] Card con la info del villager
 - [ ] Poder marcar como favorito
-- [ ] Poder añadirlo en tu profile en tu isla
+- [ ] Poder añadirlo en tu isla
 
 # PROFILE
 - [ ] Tener personajes favoritos
 - [ ] Poder poner los que tienes en tu isla
 - [ ✅ ] Boton de crear eventos 
-- [ ] Que se vean tus eventos eventos 
+- [ ] Que se vean tus eventos 
 - [ ✅ ] Poder editar tus datos 
 - [ ✅ ] Borra tu cuenta
 - [ ✅ ] Rutas de profile

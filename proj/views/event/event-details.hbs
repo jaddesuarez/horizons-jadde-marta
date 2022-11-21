@@ -1,10 +1,10 @@
 <div class="container mt-5">
 
     <h1>{{title}}</h1>
-    <h3>Event Creator: {{creator.name}}</h3>
-    <p>Date: {{date}}</p>
-    <p>Island: {{creator.islandName}}</p>
-    <p>Description: {{description}}</p>
+    <h4>{{description}}</h4>
+    <h5>Event Creator: <a href="/profile/{{user._id}}">@{{creator.username}}</a></h5>
+    <p><strong>Date:</strong> {{date}}</p>
+    <p><strong>Island:</strong> {{creator.islandName}}</p>
     <hr>
 
     <a href="XXXX" class="btn btn-primary">Join</a>

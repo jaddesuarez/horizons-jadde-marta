@@ -18,7 +18,7 @@ module.exports = app => {
 
     // Event routes
     const eventRouter = require("./event.routes")
-    app.use("/event", eventRouter)
+    app.use("/events", eventRouter)
 
     // Nookipedia routes
     const nookipediaRouter = require("./nookipedia.routes")

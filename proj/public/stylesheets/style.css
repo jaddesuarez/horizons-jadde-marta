@@ -2,8 +2,12 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00b7ff;
+.navbar {
+  background-color: #c48d3f;
+}
+
+.navbar a {
+  color: white;
 }
 
 h1 {
@@ -41,4 +45,8 @@ h1 {
   --bs-btn-active-border-color: #819773;
   --bs-btn-disabled-bg: #b8d8a4;
   --bs-btn-disabled-border-color: #b8d8a4;
+}
+
+.villager {
+  size: 10%;
 }
