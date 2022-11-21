@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         .find()
         .sort({ title: 1 })
         .populate('creator')
+        .populate('attendance')
         .then(eventArr => {
             console.log(eventArr)
             res.render('event/event-list', { eventArr })
@@ -30,11 +31,12 @@ router.get('/create', isLoggedIn, (req, res) => {
 router.post('/create', (req, res) => {
 
     const creator = req.session.currentUser._id
+    const attendance = req.session.currentUser._id
     const { title, description, date } = req.body
     // console.log(`holiii`, creator)
 
     Event
-        .create({ title, description, creator, date })
+        .create({ title, description, creator, date, attendance })
         .then(() => {
             res.redirect(`/profile/${creator}`)
         }).catch(err => {
@@ -73,7 +75,20 @@ router.post('/:event_id/edit', isLoggedIn, (req, res) => {
         })
 })
 
-// Delete Item
+// Join Event
+router.post('/:event_id/join', (req, res) => {
+    const { event_id } = req.params
+
+    Event
+        .findByIdAndUpdate(event_id, { $push: { attendance: req.session.currentUser._id } })
+        .then(() => res.redirect(`/event`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/event/${event_id}`)
+        })
+})
+
+// Delete Event
 router.post('/:event_id/delete', (req, res) => {
     const { event_id } = req.params
 

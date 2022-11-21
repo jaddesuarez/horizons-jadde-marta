@@ -5,7 +5,7 @@ const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
 
-// Characters list
+// Villagers list
 router.get("/", (req, res, next) => {
 
     api
@@ -15,6 +15,7 @@ router.get("/", (req, res, next) => {
 
 })
 
+// Villager details
 router.get("/:villager_name", (req, res, next) => {
 
     const { villager_name } = req.params

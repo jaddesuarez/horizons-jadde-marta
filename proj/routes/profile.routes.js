@@ -5,14 +5,6 @@ const router = express.Router()
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
-<<<<<<< HEAD
-=======
-/*
-`/profile/:id`
-`/profile/:id/edit`
-`/profile/:id/delete`
- */
->>>>>>> 1a49cff7c78f2c7667eae196e7d7282d9861adfc
 
 // User details - Profile
 router.get('/:user_id', (req, res) => {
