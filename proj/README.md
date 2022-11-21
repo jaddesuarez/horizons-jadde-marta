@@ -115,8 +115,5 @@
 - [ ] Hacer nookipedia de animales
 
 
-//TEST BRANCH JADDE
-
-
 
 

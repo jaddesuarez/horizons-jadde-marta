@@ -12,6 +12,10 @@ module.exports = app => {
     const userRouter = require("./user.routes")
     app.use("/profile", userRouter)
 
+    // Community routes
+    const communityRouter = require("./community.routes")
+    app.use("/community", communityRouter)
+
     // Event routes
     const eventRouter = require("./event.routes")
     app.use("/event", eventRouter)
