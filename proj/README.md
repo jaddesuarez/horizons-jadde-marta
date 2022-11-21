@@ -51,7 +51,6 @@
 - [ ✅ ] Modelo de evento
 - [ ✅ ] Modelo de user
 - [ ] CRUD de eventos
-- [ ] Empezar Nookipedia
 
 # LUNES
 - [ ] Nookipedia
@@ -115,6 +114,8 @@
 - [ ] Validar amigo
 - [ ] Hacer nookipedia de animales
 
+
+//TEST BRANCH JADDE
 
 
 
