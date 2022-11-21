@@ -25,9 +25,7 @@ const Event = require('../models/Event.model')
 
 //     Event
 //         .findById(event_id)
-//         // .sort({ title: 1 })
-//         .populate('creator', 'name')
-//         .populate('islandName')
+//         .populate('creator')
 //         .then(eventFromDB => {
 //             // console.log(eventFromDB)
 //             res.render('event/event-details', eventFromDB)
