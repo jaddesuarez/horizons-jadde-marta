@@ -5,28 +5,28 @@
 
 # TABLE ROUTE 
 
-| Route                      | HTTP Verb | Description                   | JSON      |
-| -------------------------- | --------- | ------------------------------|-----------|
-| `/home`                    | GET       | Home                          |           |
-| `/wiki`                    | GET       | Search for villagers          |           |
-| `/wiki/villagers`          | GET       | List of all villagers         |           |
-| `/wiki/villagers/:id`      | GET       | Details of a specific villager |           |
-| `/signup`                  | GET       | Create a new user             |           |
-| `/signup`                  | POST      | Create a new user             |           |
-| `/login`                   | GET       | Log in form                   |           |
-| `/login`                   | POST      | Log in form                   |           |
-| `/logout`                  | GET       | Log out redirect Log In       |           |
-| `/profile/:id`              | GET       | Profile details                |           |
-| `/profile/:id/edit`         | GET       | Edit profile                   |           |
-| `/profile/:id/edit`         | POST      | Edit profile                   |           |
-| `/profile/:id/delete`       | POST      | Delete profile                 |           |
-| `/community`               | GET       | List of other users           |           |
-| `/event/create`            | GET       | Create event                  |           |
-| `/event/create`            | POST      | Create event                  |           |
-| `/event/:id`               | GET       | See event details             |           |
-| `/event/:id/edit`          | GET       | Edit event                    |           |
-| `/event/:id/edit`          | POST      | Edit event                    |           |
-| `/event/:id/delete`        | POST      | Delete event                  |           |
+| Route                      | HTTP Verb | Description                   | JSON      |   DONE  |
+| -------------------------- | --------- | ------------------------------|-----------|---------|
+| `/home`                    | GET       | Home                          |           |         |
+| `/wiki`                    | GET       | Search for villagers          |           |         |
+| `/wiki/villagers`          | GET       | List of all villagers         |           |         |
+| `/wiki/villagers/:id`      | GET       | Details of a specific villager |           |         |
+| `/signup`                  | GET       | Create a new user             |           |         |
+| `/signup`                  | POST      | Create a new user             |           |         |
+| `/login`                   | GET       | Log in form                   |           |         |
+| `/login`                   | POST      | Log in form                   |           |         |
+| `/logout`                  | GET       | Log out redirect Log In       |           |         |
+| `/profile/:id`              | GET       | Profile details                |           |    ✅    |
+| `/profile/:id/edit`         | GET       | Edit profile                   |           |    ✅    |
+| `/profile/:id/edit`         | POST      | Edit profile                   |           |    ✅    |
+| `/profile/:id/delete`       | POST      | Delete profile                 |           |    ✅    |
+| `/community`               | GET       | List of other users           |           |          |
+| `/event/create`            | GET       | Create event                  |           |          |
+| `/event/create`            | POST      | Create event                  |           |          |
+| `/event/:id`               | GET       | See event details             |           |          |
+| `/event/:id/edit`          | GET       | Edit event                    |           |          |
+| `/event/:id/edit`          | POST      | Edit event                    |           |          |
+| `/event/:id/delete`        | POST      | Delete event                  |           |          |
 
 
 # PANTALLAS 
@@ -73,6 +73,7 @@
 # NOOKIPEDIA
 - [ ] Barra de búsqueda para villagers
 - [ ] Poder filtrar por gender, personality & specie
+- [ ] Lista de villagers
 - [ ] Rutas de nookipedia
 
 # VILLAGERS PAGE
@@ -117,11 +118,8 @@
 - [ ] Hacer nookipedia de animales
 
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> ca044ba7e7253a88081c11dc9d887262a179b5a8
 
 

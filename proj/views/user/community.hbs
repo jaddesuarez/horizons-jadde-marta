@@ -1,18 +1,20 @@
 <div class="container">
     <h1>Community</h1>
     <hr>
-
     {{#each usersArr}}
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{profileImg}}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{name}} {{lastName}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/profile/{{_id}}" class="btn btn-primary">INFO</a>
+    <div class="row">
+        <div class="card" style="width: 10rem;">
+            <div class="col">
+                <div class="col">
+                    <img class="card-img-top" src="{{profileImg}}" alt="profile image">
+                </div>
+                <div class="col">
+                    <h5 class="card-title">{{name}} {{lastName}}</h5>
+                    <a href="/profile/{{_id}}" class="btn btn-primary">INFO</a>
+                </div>
+            </div>
         </div>
+        <hr>
     </div>
     {{/each}}
-
-    <hr>
 </div>
