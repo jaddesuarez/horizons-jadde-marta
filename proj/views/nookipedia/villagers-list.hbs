@@ -1,14 +1,13 @@
 <h1>Villagers</h1>
 
-<div class="row display:inline-block">
-    <div class="card" style="width: 18rem;">
-
+<div class="row flex-wrap">
+    <div class="card" style="width: 10rem;">
         {{#each villagers}}
         <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
         <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
             <p class="card-text">{{personality}}</p>
-            <a href="/wiki/{{name}}" class="btn btn-primary">See More</a>
+            <a href="/wiki/{{name}}" class="btn btn-primary d-grid">See More</a>
         </div>
         <hr>
         {{/each}}
