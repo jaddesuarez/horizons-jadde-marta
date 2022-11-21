@@ -41,22 +41,6 @@
 
 <!---------------------------->
 
-# SÁBADO
-- [ ✅ ] Tabla de rutas
-- [ ✅ ] Rutas de auth : log in
-- [ ✅ ] Rutas de auth : sign in
-
-# DOMINGO
-- [ ✅ ] Modelo de evento
-- [ ✅ ] Modelo de user
-- [ ] CRUD de eventos
-
-# LUNES
-- [ ] Jadde: rutas de events
-- [ ] Marta: Pantalla de Profile
-
-<!---------------------------->
-
 # LOG IN
 - [ ✅ ] Formulario de inicio de sesion
 
@@ -89,7 +73,7 @@
 # PROFILE
 - [ ] Tener personajes favoritos
 - [ ] Poder poner los que tienes en tu isla
-- [ ] Boton de crear eventos 
+- [ ✅ ] Boton de crear eventos 
 - [ ] Que se vean tus eventos eventos 
 - [ ✅ ] Poder editar tus datos 
 - [ ✅ ] Borra tu cuenta
@@ -100,17 +84,13 @@
 - [ ✅ ] Crear evento
 - [ ✅ ] Borrar evento
 - [ ✅ ] Editar evento
-- [ ] Rutas de eventos
+- [ ✅ ] Rutas de eventos
 
 # COMMUNITY
 - [ ] Buscar a otros usuarios
+- [ ✅ ] Lista de usuarios
 - [ ] Buscar eventos
 - [ ] Rutas de community
-
-# COMMUNITY DETAILS
-- [ ] Ver la info del usuario
-- [ ] Ver sus eventos
-- [ ] Añadirle como amigo (follow)
 
 # BONUS
 - [ ] Chat entre users

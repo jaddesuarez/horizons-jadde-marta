@@ -24,6 +24,10 @@ h1 {
   background-color: #f6efe2;
 }
 
+.eventImg {
+  resize: 10
+}
+
 .card-img-top {
   border-radius: 50%;
 }

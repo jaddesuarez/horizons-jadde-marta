@@ -40,14 +40,14 @@
 <hr>
 {{!-- VER TUS EVENTOS --}}
 <h3><strong>Your Events</strong></h3>
-{{#each event}}
+{{#each formattedEvents}}
 <div class="card mb-3">
-    <img src="{{eventImg}}" class="card-img-top" alt="Event image">
+    <img src="{{eventImg}}" class="img-fluid eventImg" style="height:10rem" alt="Event image">
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{description}}.</p>
-        <p class="card-text"><small class="text-muted">{{creator}}</small></p>
-        <p class="card-text"><small class="text-muted">{{date}}</small></p>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text"><small class="text-muted">@{{creator.username}}</small></p>
+        <p class="card-text"><small class="text-muted">{{formattedDate}}</small></p>
     </div>
 </div>
 {{/each}}

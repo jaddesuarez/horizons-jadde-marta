@@ -5,18 +5,6 @@ const router = express.Router()
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
-<<<<<<< HEAD
-/*
-`/profile/:id`
-`/profile/:id/edit`
-`/profile/:id/delete`
- */
-=======
-/*  `/profile/:id`
- `/profile/:id/edit`
- `/profile/:id/delete` */
-
->>>>>>> 9a4b3b1a0c27488ca3fae4ee698394c17a809b87
 
 // User details - Profile
 router.get('/:user_id', (req, res) => {
@@ -25,14 +13,27 @@ router.get('/:user_id', (req, res) => {
     User
         .findById(user_id)
         .then(userFromDB => {
-            console.log(userFromDB)
-            res.render('profile/profile', {
-                userFromDB,
-                /* isADM: req.session.currentUser.role === 'ADMIN',
-                isCurrentUser: req.session.currentUser._id === user_id */
-            })
+
+            Event
+                .find()
+                .populate('creator')
+                .then(eventsFromDB => {
+
+                    let formattedDate = eventsFromDB[0].date.toString().split("T")[0].split("01")[0]
+
+                    const formattedEvents = eventsFromDB.map(event => {
+                        return { ...event._doc, formattedDate }
+                    })
+                    // console.log(eventsFromDB[0].date.toString().split("T")[0].split("01")[0])
+                    // console.log(formattedEvents)
+                    res.render('profile/profile', { userFromDB, formattedEvents })
+                    /* isADM: req.session.currentUser.role === 'ADMIN',
+                    isCurrentUser: req.session.currentUser._id === user_id */
+                })
+                .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
+
 })
 
 // Edit Profile
