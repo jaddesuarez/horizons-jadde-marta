@@ -90,7 +90,9 @@
 - [ ] Poder poner los que tienes en tu isla
 - [ ] Boton de crear eventos 
 - [ ] Que se vean tus eventos eventos 
-- [ ] Rutas de profile
+- [ ✅ ] Poder editar tus datos 
+- [ ✅ ] Borra tu cuenta
+- [ ✅ ] Rutas de profile
 
 # EVENTOS
 - [ ✅ ] Lista de eventos

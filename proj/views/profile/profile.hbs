@@ -10,10 +10,19 @@
                 <p class="card-text"><strong>Email:</strong> {{userFromDB.email}}</p>
                 <p class="card-text"><strong>Island Name:</strong> {{userFromDB.islandName}}</p>
                 <p class="card-text"><strong>Fruit:</strong> {{userFromDB.fruit}}</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="/profile/{{userFromDB._id}}/edit" class="btn btn-outline-success">Edit Profile</a>
+                        <form action="/profile/{{userFromDB._id}}/delete" method="POST" style="display: inline">
+                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-7">
-            <img src="{{userFromDB.profileImg}}" class="img-fluid rounded-start" alt="profile image">
+            <img src="{{userFromDB.profileImg}}" class="rounded-start" alt="profile image">
         </div>
     </div>
 </div>
@@ -43,13 +52,4 @@
 </div>
 {{/each}}
 <hr>
-{{!-- BOTONES DE EDITAR Y BORRAR PERFIL --}}
-<div class="row">
-    <div class="col-md-6">
-        <a href="/profile/{{userFromDB._id}}/edit" class="btn btn-warning">Edit Profile</a>
-
-        <form action="/profile/{{userFromDB._id}}/delete" method="POST" style="display: inline">
-            <input type="submit" value="Delete" class="btn btn-danger">
-        </form>
-    </div>
-</div>
+<a href="/event/create" class="btn btn-outline-primary">Create New Event</a>

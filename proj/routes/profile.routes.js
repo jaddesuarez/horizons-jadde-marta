@@ -55,8 +55,11 @@ router.post('/:user_id/delete', (req, res) => {
     const { user_id } = req.params
 
     User
-        .findById(user_id)
-        .then()
+        .findByIdAndDelete(user_id)
+        .then(() => {
+            res.redirect('/')
+        })
+        .catch(err => console.log(err))
 })
 
 
