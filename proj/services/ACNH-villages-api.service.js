@@ -19,6 +19,10 @@ class ApiService {
     getOneVillager = (villagerName) => {
         return this.axiosApp.get(`villagers?name=${villagerName}`).then((res) => res.data)
     }
+
+    getSpecies = (speciesName) => {
+        return this.axiosApp.get(`villagers?species=${speciesName}`).then((res) => res.data)
+    }
 }
 
 module.exports = ApiService

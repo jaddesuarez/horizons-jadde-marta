@@ -1,21 +1,23 @@
-# PARA EL LUNES
-- [ ✅ ] Endpoints tabla de rutas
-- [ ✅ ] Hacer los modelos - roles
-- [ ✅ ] Auth
+# MVP
+- [ ] Roles: User y Admin
+- [ ] Nookipedia: que salgan los villagers y puedas buscar por gender, personality y specie
+- [ ] Profile: ver tus villagers y marcarlos como favoritos 
+- [ ] Profile: ver tus villagers y meterlos en tu isla
+- [ ✅ ] Community
 
 # TABLE ROUTE 
 
-| Route                      | HTTP Verb | Description                   | JSON      |   DONE  |
-| -------------------------- | --------- | ------------------------------|-----------|---------|
-| `/home`                    | GET       | Home                          |           |         |
-| `/wiki`                    | GET       | Search for villagers          |           |         |
-| `/wiki/villagers`          | GET       | List of all villagers         |           |         |
-| `/wiki/villagers/:id`      | GET       | Details of a specific villager |           |         |
-| `/signup`                  | GET       | Create a new user             |           |         |
-| `/signup`                  | POST      | Create a new user             |           |         |
-| `/login`                   | GET       | Log in form                   |           |         |
-| `/login`                   | POST      | Log in form                   |           |         |
-| `/logout`                  | GET       | Log out redirect Log In       |           |         |
+| Route                      | HTTP Verb | Description                   | JSON      |   DONE   |
+| -------------------------- | --------- | ------------------------------|-----------|----------|
+| `/home`                    | GET       | Home                          |           |    ✅    |
+| `/wiki`                    | GET       | Search for villagers          |           |    ✅    |
+| `/wiki          `          | GET       | List of all villagers         |           |    ✅    |
+| `/wiki/name`               | GET       | Details of a specific villager |           |    ✅    |
+| `/signup`                  | GET       | Create a new user             |           |    ✅    |
+| `/signup`                  | POST      | Create a new user             |           |    ✅    |
+| `/login`                   | GET       | Log in form                   |           |    ✅    |
+| `/login`                   | POST      | Log in form                   |           |    ✅    |
+| `/logout`                  | GET       | Log out redirect Log In       |           |    ✅    |
 | `/profile/:id`              | GET       | Profile details                |           |    ✅    |
 | `/profile/:id/edit`         | GET       | Edit profile                   |           |    ✅    |
 | `/profile/:id/edit`         | POST      | Edit profile                   |           |    ✅    |
@@ -48,10 +50,10 @@
 - [ ✅ ] Formulario de registro
 
 # INICIO
-- [ ] Ir a Nookipedia
-- [ ] Ir a Community
-- [ ] Ir a profile
-- [ ] Log In
+- [ ✅ ] Ir a Nookipedia
+- [ ✅ ] Ir a Community
+- [ ✅ ] Ir a profile
+- [ ✅ ] Log In
 - [ ] Log Out
 
 # NOOKIPEDIA

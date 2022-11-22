@@ -1,5 +1,39 @@
 <h1>Villagers</h1>
 
+<form action="/wiki/{{_id}}" method="POST">
+    <div class="container d-grid">
+        <input type="text" class="form-control mt-3 mb-2" placeholder="Search for a Villager">
+        <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <select placeholder='Specie' name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                {{#each speciesOptions}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col">
+            <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                {{#each personalityOptions}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col">
+            <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                {{#each genderOptions}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+</div>
+
+
 <div class="row flex-wrap">
     <div class="card" style="width: 10rem;">
         {{#each villagers}}

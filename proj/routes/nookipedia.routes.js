@@ -10,10 +10,24 @@ router.get("/", (req, res, next) => {
 
     api
         .getAllVillagers()
-        .then(villagers => res.render('nookipedia/villagers-list', { villagers }))
-        .catch(err => console.log(err))
+        .then(villagers => {
+            const species = villagers.map(villager => villager.species)
+            let speciesOptions = [...new Set(species)]
 
+            const personality = villagers.map(villager => villager.personality)
+            let personalityOptions = [...new Set(personality)]
+
+            const gender = villagers.map(villager => villager.gender)
+            let genderOptions = [...new Set(gender)]
+
+            res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
+        })
+        .catch(err => console.log(err))
 })
+
+
+// Species
+router.get
 
 // Villager details
 router.get("/:villager_name", (req, res, next) => {
