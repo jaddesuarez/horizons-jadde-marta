@@ -1,20 +1,20 @@
-<h1>@{{userFromDB.username}}</h1>
+<h1>@{{user.username}}</h1>
 <h4>This is your Profile.</h4>
 <hr>
 <div class="card mb-3" style="">
     <div class="row g-0">
         <div class="col-md-5">
             <div class="card-body" style="text-align: start">
-                <h5 class="card-title mb-3">{{userFromDB.name}} {{userFromDB.lastName}}</h5>
-                <p class="card-text"><strong>Username:</strong> {{userFromDB.username}}</p>
-                <p class="card-text"><strong>Email:</strong> {{userFromDB.email}}</p>
-                <p class="card-text"><strong>Island Name:</strong> {{userFromDB.islandName}}</p>
-                <p class="card-text"><strong>Fruit:</strong> {{userFromDB.fruit}}</p>
+                <h5 class="card-title mb-3">{{user.name}} {{user.lastName}}</h5>
+                <p class="card-text"><strong>Username:</strong> {{user.username}}</p>
+                <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
+                <p class="card-text"><strong>Island Name:</strong> {{user.islandName}}</p>
+                <p class="card-text"><strong>Fruit:</strong> {{user.fruit}}</p>
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="/profile/{{userFromDB._id}}/edit" class="btn btn-outline-success">Edit Profile</a>
-                        <form action="/profile/{{userFromDB._id}}/delete" method="POST" style="display: inline">
+                        <a href="/profile/{{user._id}}/edit" class="btn btn-outline-success">Edit Profile</a>
+                        <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
                             <input type="submit" value="Delete" class="btn btn-outline-danger">
                         </form>
                     </div>
@@ -29,30 +29,63 @@
 <hr>
 {{!-- VER TUS PERSONAJES --}}
 <h3><strong>Your Villagers</strong></h3>
-{{#each userFromDB.currentVillagers}}
-<p>{{this}}</p>
-{{/each}}
+<div class="container d-flex flex-wrap justify-content-start">
+    {{#each currentVillagers}}
+    <div class="row mx-2">
+        <div class="card" style="width: 10rem;">
+            <div class="col">
+                <div class="col">
+                    <img class="card-img-top" src="{{this.image_url}}" alt="profile image">
+                </div>
+                <div class="col">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <a href="/profile/{{_id}}" class="btn btn-primary">INFO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
 
 
 <hr>
 {{!-- VER TUS FAVORITOS --}}
 <h3><strong>Your Favourites</strong></h3>
-{{#each userFromDB.favVillagers}}
-<p>{{this}}</p>
-{{/each}}
+<div class="container d-flex flex-wrap justify-content-start">
+    {{#each favVillagers}}
+    <div class="row mx-2">
+        <div class="card" style="width: 10rem;">
+            <div class="col">
+                <div class="col">
+                    <img class="card-img-top" src="{{this.image_url}}" alt="profile image">
+                </div>
+                <div class="col">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <a href="/profile/{{_id}}" class="btn btn-primary">INFO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
 
 
 
 <hr>
 {{!-- VER TUS EVENTOS --}}
 <h3><strong>Your Events</strong></h3>
-{{#each formattedEvents}}
+{{#each myEvents}}
 <div class="card mb-3">
     <img src="{{eventImg}}" class="img-fluid eventImg" style="height:10rem" alt="Event image">
     <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{description}}</p>
-        <p class="card-text"><small class="text-muted">@{{creator.username}}</small></p>
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.description}}</p>
+        <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
+        <p class="card-text">Attendance:
+            {{#each attendance}}
+            <small class="text-muted">{{this.name}}| </small>
+            {{/each}}
+        </p>
         <p class="card-text"><small class="text-muted">{{formattedDate}}</small></p>
     </div>
 </div>
