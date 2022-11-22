@@ -63,6 +63,34 @@ router.post('/:user_id/edit', (req, res) => {
         .catch(err => console.log(err))
 })
 
+// Add Villager to Fav
+router.post('/:villager_name/addFav', (req, res) => {
+    console.log('hello:', req.params)
+    const { villager_name } = req.params
+
+    User
+        .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { favVillagers: villager_name } })
+        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/`)
+        })
+})
+
+// Add Villager to Island
+router.post('/:villager_name/addResident', (req, res) => {
+    console.log('hello:', req.params)
+    const { villager_name } = req.params
+
+    User
+        .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { currentVillagers: villager_name } })
+        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/`)
+        })
+})
+
 // Delete Profile
 router.post('/:user_id/delete', (req, res) => {
     const { user_id } = req.params
