@@ -1,3 +1,4 @@
+const { query } = require('express')
 const express = require('express')
 const router = express.Router()
 
@@ -25,13 +26,20 @@ router.get("/", (req, res, next) => {
         .catch(err => console.log(err))
 })
 
+// Villager details query
+router.get("/search", (req, res, next) => {
+    const { name } = req.query
 
-// Species
-router.get
+    api
+        .getOneVillager(name)
+        .then(([villager]) => {
+            res.render('nookipedia/villager-detail', villager)
+        })
+        .catch(err => console.log(err))
+})
 
 // Villager details
 router.get("/:villager_name", (req, res, next) => {
-
     const { villager_name } = req.params
 
     api

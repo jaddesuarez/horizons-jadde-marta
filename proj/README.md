@@ -57,7 +57,7 @@
 - [ ] Log Out
 
 # NOOKIPEDIA
-- [ ] Barra de búsqueda para villagers
+- [ ✅ ] Barra de búsqueda para villagers
 - [ ] Poder filtrar por gender, personality & specie
 - [ ✅ ] Lista de villagers
 - [ ✅ ] Rutas de nookipedia
@@ -69,8 +69,8 @@
 - [ ] Poder añadirlo en tu isla
 
 # PROFILE
-- [ ] Tener personajes favoritos
-- [ ] Poder poner los que tienes en tu isla
+- [ ✅ ] Tener personajes favoritos
+- [ ✅ ] Poder poner los que tienes en tu isla
 - [ ✅ ] Boton de crear eventos 
 - [ ] Que se vean tus eventos 
 - [ ✅ ] Poder editar tus datos 

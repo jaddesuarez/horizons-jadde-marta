@@ -4,17 +4,30 @@
             <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
         </div>
         <div class="col">
-            <h3>Villager Name: {{name}}</h3>
-            <p>Personality: {{personality}}</p>
-            <p>Specie: {{species}}</p>
-            <p>Gender: {{gender}}</p>
+            <h3> {{name}}</h3>
             <hr>
-            <form action="/profile/{{name}}/addFav" method="POST">
-                <button class="btn btn-primary">FAV</button>
-            </form>
-            <form action="/profile/{{name}}/addResident" method="POST">
-                <button class="btn btn-primary">Add to island</button>
-            </form>
+            <h5 class='mb-4'><em><strong>"{{quote}}"</strong></em></h5>
+            <p><strong>Personality:</strong> {{personality}}</p>
+            <p><strong>Specie:</strong> {{species}}</p>
+            <p><strong>Genre:</strong> {{gender}}</p>
+            <p><strong>Birthday:</strong> {{birthday_day}} of {{birthday_month}}</p>
+            <p><strong>Sign:</strong> {{sign}}</p>
+            <p><strong>Gender:</strong> {{gender}}</p>
+            <hr>
+
+            <div class="row">
+                <div class="col mb-6 d-grid">
+                    <form action="/profile/{{name}}/addFav" method="POST">
+                        <button class="btn btn-primary">FAV</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="/profile/{{name}}/addResident" method="POST">
+                        <button class="btn btn-primary">Add to island</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 
