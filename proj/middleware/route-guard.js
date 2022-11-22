@@ -14,26 +14,17 @@ function isLoggedOut(req, res, next) {
     }
 }
 
-/* const checkRoles = (...rolesToCheck) => (req, res, next) => {
-    if (rolesToCheck.includes(req.session.currentUser.role)) {
-        next()
-    } else {
-        res.render('auth/login', { errorMessage: `No tienes permisos de ${roleToCheck}` })
-    }
-}
-
-function checkEdit(req, res, next) {
+function checkRoles(req, res, next) {
     if (req.session.currentUser._id === req.params.user_id || req.session.currentUser.role === 'ADMIN') {
         next()
     } else {
-        res.render('auth/login', { errorMessage: 'No tienes permisos' })
+        res.render('auth/login', { errorMessage: 'Please login' })
     }
-} */
+}
 
 
 module.exports = {
     isLoggedIn,
     isLoggedOut,
-    /*  checkRoles,
-     checkEdit */
+    checkRoles,
 }

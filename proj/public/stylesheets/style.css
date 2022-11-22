@@ -1,5 +1,8 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/background.jpeg");
+  background-size: 50%;
+  background-repeat: repeat;
 }
 
 .navbar {
@@ -32,7 +35,7 @@ h1 {
   resize: 10
 }
 
-.card-img-top {
+.user-img {
   border-radius: 50%;
 }
 
