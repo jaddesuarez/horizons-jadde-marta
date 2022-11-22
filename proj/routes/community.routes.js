@@ -16,6 +16,15 @@ router.get('/', (req, res) => {
         .catch(err => console.log(err))
 })
 
+router.get("/search", (req, res, next) => {
+    const { name } = req.query
 
+    User
+        .find(name)
+        .then(([user]) => {
+            res.render('user/community/user-details', { user })
+        })
+        .catch(err => console.log(err))
+})
 
 module.exports = router

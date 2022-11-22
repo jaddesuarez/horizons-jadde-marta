@@ -6,35 +6,35 @@
             placeholder="Search for a Villager">
         <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
     </div>
-</form>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <select placeholder='Specie' name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                <option selected>Species</option>
-                {{#each speciesOptions}}
-                <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-        </div>
-        <div class="col">
-            <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                <option selected>Personality</option>
-                {{#each personalityOptions}}
-                <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
-        </div>
-        <div class="col">
-            <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                <option selected>Gender</option>
-                {{#each genderOptions}}
-                <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <select placeholder='Specie' name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                    <option selected>Species</option>
+                    {{#each speciesOptions}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col">
+                <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                    <option selected>Personality</option>
+                    {{#each personalityOptions}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col">
+                <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
+                    <option selected>Gender</option>
+                    {{#each genderOptions}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 
 
