@@ -30,7 +30,13 @@ const userSchema = new Schema(
       type: String,
       enum: ['USER', 'ADMIN'],
       default: 'USER'
-    }
+    },
+    currentVillagers: [{
+      type: String
+    }],
+    favVillagers: [{
+      type: String
+    }]
   },
   {
     timestamps: true

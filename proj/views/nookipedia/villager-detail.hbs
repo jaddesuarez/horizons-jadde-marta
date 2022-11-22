@@ -9,8 +9,12 @@
             <p>Specie: {{species}}</p>
             <p>Gender: {{gender}}</p>
             <hr>
-            <a href="XXXX" class="btn btn-primary">Add to island</a>
-            <a href="XXXX" class="btn btn-primary">FAV</a>
+            <form action="/profile/{{name}}/addFav" method="POST">
+                <button class="btn btn-primary">FAV</button>
+            </form>
+            <form action="/profile/{{name}}/addResident" method="POST">
+                <button class="btn btn-primary">Add to island</button>
+            </form>
         </div>
     </div>
 

@@ -29,11 +29,17 @@
 <hr>
 {{!-- VER TUS PERSONAJES --}}
 <h3><strong>Your Villagers</strong></h3>
+{{#each userFromDB.currentVillagers}}
+<p>{{this}}</p>
+{{/each}}
 
 
 <hr>
 {{!-- VER TUS FAVORITOS --}}
 <h3><strong>Your Favourites</strong></h3>
+{{#each userFromDB.favVillagers}}
+<p>{{this}}</p>
+{{/each}}
 
 
 
