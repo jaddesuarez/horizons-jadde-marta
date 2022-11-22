@@ -7,11 +7,13 @@
     <p><strong>Island:</strong> {{creator.islandName}}</p>
     <hr>
 
-    <a href="XXXX" class="btn btn-primary">Join</a>
-    <a href="/event/{{_id}}/edit" class="btn btn-primary">Edit</a>
 
+    <form action="/event/{{_id}}/join" method="POST">
+        <button class="btn btn-primary">Join</button>
+    </form>
+    <a href="/event/{{_id}}/edit" class="btn btn-primary">Edit</a>
     <form action="/event/{{_id}}/delete" method="POST">
-        <button class="btn btn-warning">Delete</button>
+        <button class="btn btn-primary">Delete</button>
     </form>
 
 </div>

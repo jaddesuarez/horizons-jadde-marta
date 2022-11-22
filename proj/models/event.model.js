@@ -10,6 +10,10 @@ const eventSchema = new Schema(
             ref: 'User'
         },
         date: { type: Date, required: true },
+        attendance: [{
+            type: mongoose.Types.ObjectId,
+            ref: 'User'
+        }],
         eventImg: {
             type: String,
             default: '',

@@ -6,6 +6,13 @@
     <p>
     <h4>{{title}}</h4>
     <a href="/events/{{_id}}">See more</a>
+    <p>Attendance:
+        {{#each attendance}}
+        <span>{{name}}| </span>
+        {{/each}}
+    </p>
+
+    <a href="/event/{{_id}}">See more</a>
     </p>
     {{/each}}
 
