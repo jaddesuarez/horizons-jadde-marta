@@ -62,6 +62,7 @@ router.post('/login', (req, res) => {
             }
             req.session.currentUser = user
             req.app.locals.currentUserId = user._id
+            req.app.locals.currentUserName = user.name
             res.redirect('/')
         })
         .catch(err => console.log(err))

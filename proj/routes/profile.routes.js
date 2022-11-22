@@ -68,7 +68,7 @@ router.get('/:user_id', (req, res) => {
 
 })
 
-// Edit Profile
+// Edit Profile (Render)
 router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
     const { user_id } = req.params
 
@@ -80,6 +80,7 @@ router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
         .catch(err => console.log(err))
 })
 
+// Edit Profile (Handle)
 router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageField'), (req, res) => {
     const { email, username, name, lastName, islandName, fruit } = req.body
     const { user_id } = req.params

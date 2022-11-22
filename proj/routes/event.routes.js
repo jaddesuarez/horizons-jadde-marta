@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-
+const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
@@ -60,14 +60,14 @@ router.get('/:event_id/edit', isLoggedIn, (req, res) => {
 
 
 // Edit Event (Handle)
-router.post('/:event_id/edit', isLoggedIn, (req, res) => {
+router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, res) => {
 
     const creator = req.session.currentUser._id
     const { title, description, date } = req.body
     const { event_id } = req.params
 
     Event
-        .findByIdAndUpdate(event_id, { title, description, creator, date })
+        .findByIdAndUpdate(event_id, { title, description, creator, date, eventImg: req.file.path })
         .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
             console.log(err)

@@ -15,8 +15,8 @@ const userSchema = new Schema(
     },
     profileImg: {
       type: String,
-      default: '',
-      set: value => value === '' ? '' : value
+      default: '/images/profile-default.png',
+      set: value => value === '' ? '/images/profile-default.png' : value
     },
     islandName: {
       type: String,

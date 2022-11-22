@@ -13,10 +13,17 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
+                        {{#if isCurrentUser}}
                         <a href="/profile/{{user._id}}/edit" class="btn btn-outline-success">Edit Profile</a>
                         <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
                             <input type="submit" value="Delete" class="btn btn-outline-danger">
                         </form>
+                        {{/if}}
+                        {{#if isADM}}
+                        <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
+                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                        </form>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -76,7 +83,7 @@
 <h3><strong>Your Events</strong></h3>
 {{#each myEvents}}
 <div class="card mb-3">
-    <img src="{{eventImg}}" class="img-fluid eventImg" style="height:10rem" alt="Event image">
+    <img src="{{this.eventImg}}" class="img-fluid eventImg" style="height:10rem" alt="Event image">
     <div class="card-body">
         <h5 class="card-title">{{this.title}}</h5>
         <p class="card-text">{{this.description}}</p>
