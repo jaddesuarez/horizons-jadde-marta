@@ -34,18 +34,18 @@
 </div>
 
 
-<div class="row flex-wrap">
+<div class="row flex-wrap gap-3 align-items-center">
+    {{#each villagers}}
     <div class="card" style="width: 10rem;">
-        {{#each villagers}}
         <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
         <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
             <p class="card-text">{{personality}}</p>
             <a href="/wiki/{{name}}" class="btn btn-primary d-grid">See More</a>
         </div>
-        <hr>
-        {{/each}}
+
     </div>
+    {{/each}}
 
 </div>
 
