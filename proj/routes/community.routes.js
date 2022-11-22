@@ -17,12 +17,12 @@ router.get('/', (req, res) => {
 })
 
 router.get("/search", (req, res, next) => {
-    const { name } = req.query
-
+    const { username } = req.query
+    console.log(username)
     User
-        .find(name)
-        .then(([user]) => {
-            res.render('user/community/user-details', { user })
+        .find({ username })
+        .then((username) => {
+            res.render('profile/profile', { user: username })
         })
         .catch(err => console.log(err))
 })

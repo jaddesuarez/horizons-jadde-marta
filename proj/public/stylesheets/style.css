@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-  background-color: #c48d3f;
+  background-color: #41797c;
 }
 
 .navbar a {
@@ -52,4 +52,17 @@ h1 {
 
 .villager {
   size: 10%;
+}
+
+.btn-search {
+  --bs-btn-bg: #b8d8a4;
+  --bs-btn-border-color: #b8d8a4;
+  --bs-btn-hover-bg: #a6c294;
+  --bs-btn-hover-border-color: #93ad83;
+  --bs-btn-active-bg: #93ad83;
+  --bs-btn-active-border-color: #819773;
+  --bs-btn-hover-color: white;
+  --bs-btn-color: #3e443a;
+  --bs-btn-disabled-bg: #b8d8a4;
+  --bs-btn-disabled-border-color: #b8d8a4;
 }

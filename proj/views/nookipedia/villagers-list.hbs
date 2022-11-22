@@ -4,7 +4,7 @@
     <div class="container d-grid">
         <input type="text" id='search-box' name="name" class="form-control mt-3 mb-2"
             placeholder="Search for a Villager">
-        <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
+        <button type="submit" class="btn btn-search mb-2">Search</button>
     </div>
     <div class="container">
         <div class="row">
@@ -37,8 +37,7 @@
 </form>
 
 
-
-<div class="row row justify-content-center flex-wrap gap-3">
+<div class="row justify-content-center flex-wrap gap-3">
     {{#each villagers}}
     <div class="card" style="width: 10rem;">
         <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
@@ -52,6 +51,7 @@
     {{/each}}
 
 </div>
+
 
 {{!--
 <script>
