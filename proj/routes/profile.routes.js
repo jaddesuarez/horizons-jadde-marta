@@ -10,7 +10,7 @@ const api = new villagersApi()
 
 
 // User details - Profile
-router.get('/:user_id', (req, res) => {
+router.get('/:user_id', (req, res, next) => {
     const { user_id } = req.params
 
     const promises = [User.findById(user_id), Event.find().populate('creator').populate('attendance'), api.getAllVillagers()]
@@ -38,7 +38,7 @@ router.get('/:user_id', (req, res) => {
 
             res.render('profile/profile', { user, myEvents, favVillagers, currentVillagers, isADM, isCurrentUser })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
     // User
     //     .findById(user_id)
@@ -70,7 +70,7 @@ router.get('/:user_id', (req, res) => {
 })
 
 // Edit Profile (Render)
-router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
+router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res, next) => {
     const { user_id } = req.params
 
     User
@@ -78,11 +78,11 @@ router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
         .then((userFromDB) => {
             res.render('profile/profile-edit', userFromDB)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 // Edit Profile (Handle)
-router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageField'), (req, res) => {
+router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageField'), (req, res, next) => {
     const { email, username, name, lastName, islandName, fruit } = req.body
     const { user_id } = req.params
 
@@ -91,11 +91,11 @@ router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageFiel
         .then(() => {
             res.redirect(`/profile/${user_id}`)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 // Add Villager to Fav
-router.post('/:villager_name/addFav', isLoggedIn, (req, res) => {
+router.post('/:villager_name/addFav', isLoggedIn, (req, res, next) => {
     // console.log('Add Villager to Fav:', req.params)
     const { villager_name } = req.params
 
@@ -103,13 +103,13 @@ router.post('/:villager_name/addFav', isLoggedIn, (req, res) => {
         .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { favVillagers: villager_name } })
         .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/`)
         })
 })
 
 // Remove Villager from Fav
-router.post('/:villager_name/quitFav', isLoggedIn, (req, res) => {
+router.post('/:villager_name/quitFav', isLoggedIn, (req, res, next) => {
     // console.log('Remove Villager from Fav:', req.params)
     const { villager_name } = req.params
 
@@ -117,13 +117,13 @@ router.post('/:villager_name/quitFav', isLoggedIn, (req, res) => {
         .findByIdAndUpdate(req.session.currentUser._id, { $pull: { favVillagers: villager_name } })
         .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/`)
         })
 })
 
 // Add Villager to Island
-router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
+router.post('/:villager_name/addResident', isLoggedIn, (req, res, next) => {
     // console.log('Add Villager to Island:', req.params)
     const { villager_name } = req.params
 
@@ -131,13 +131,13 @@ router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
         .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { currentVillagers: villager_name } })
         .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/`)
         })
 })
 
 // Remove Villager from Island
-router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
+router.post('/:villager_name/addResident', isLoggedIn, (req, res, next) => {
     // console.log('Remove Villager from Island:', req.params)
     const { villager_name } = req.params
 
@@ -145,13 +145,13 @@ router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
         .findByIdAndUpdate(req.session.currentUser._id, { $pull: { currentVillagers: villager_name } })
         .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/`)
         })
 })
 
 // Delete Profile
-router.post('/:user_id/delete', isLoggedIn, checkRoles, (req, res) => {
+router.post('/:user_id/delete', isLoggedIn, checkRoles, (req, res, next) => {
     const { user_id } = req.params
 
     User
@@ -159,7 +159,7 @@ router.post('/:user_id/delete', isLoggedIn, checkRoles, (req, res) => {
         .then(() => {
             res.redirect('/')
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 module.exports = router

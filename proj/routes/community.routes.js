@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         .then(usersArr => {
             res.render('user/community', { usersArr })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.get("/search", (req, res, next) => {
@@ -25,6 +25,6 @@ router.get("/search", (req, res, next) => {
             console.log(username)
             res.render('profile/profile', { user: username })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 module.exports = router

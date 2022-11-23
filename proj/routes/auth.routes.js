@@ -30,7 +30,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
         })
         .then(() => res.redirect('/login'))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.render('auth/signup', { errorMessage: 'Username alredy taken' })
         })
 })
@@ -63,7 +63,7 @@ router.post('/login', (req, res) => {
             req.session.currentUser = user
             res.redirect('/')
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 

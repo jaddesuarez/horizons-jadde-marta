@@ -8,7 +8,7 @@ const Event = require('../models/Event.model')
 const { isLoggedIn, checkEdit, isLoggedOut, checkRoles } = require('./../middleware/route-guard')
 
 // List Events
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
 
     Event
         .find()
@@ -19,16 +19,16 @@ router.get('/', (req, res) => {
             console.log(eventArr)
             res.render('event/event-list', { eventArr })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 // Create Event (Render)
-router.get('/create', isLoggedIn, (req, res) => {
+router.get('/create', isLoggedIn, (req, res, next) => {
     res.render('event/new-event')
 })
 
 // Create Event (Handle)
-router.post('/create', (req, res) => {
+router.post('/create', (req, res, next) => {
 
     const creator = req.session.currentUser._id
     const attendance = req.session.currentUser._id
@@ -40,14 +40,14 @@ router.post('/create', (req, res) => {
         .then(() => {
             res.redirect(`/profile/${creator}`)
         }).catch(err => {
-            console.log(err)
+            next(err)
             res.redirect('/event/create')
         })
 })
 
 
 // Edit Event (Render)
-router.get('/:event_id/edit', isLoggedIn, (req, res) => {
+router.get('/:event_id/edit', isLoggedIn, (req, res, next) => {
     const { event_id } = req.params
 
     Event
@@ -55,12 +55,12 @@ router.get('/:event_id/edit', isLoggedIn, (req, res) => {
         .then(event => {
             res.render('event/event-edit', { event })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
 // Edit Event (Handle)
-router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, res) => {
+router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, res, next) => {
 
     const creator = req.session.currentUser._id
     const { title, description, date } = req.body
@@ -70,13 +70,13 @@ router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, 
         .findByIdAndUpdate(event_id, { title, description, creator, date, eventImg: req.file.path })
         .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/event/${event_id}/edit`)
         })
 })
 
 // Join Event
-router.post('/:event_id/join', (req, res) => {
+router.post('/:event_id/join', (req, res, next) => {
     // console.log('hello:', req.params)
     const { event_id } = req.params
 
@@ -84,39 +84,39 @@ router.post('/:event_id/join', (req, res) => {
         .findByIdAndUpdate(event_id, { $addToSet: { attendance: req.session.currentUser._id } })
         .then(() => res.redirect(`/event`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/event/${event_id}`)
         })
 })
 
 // Unjoin Event
-router.post('/:event_id/unjoin', (req, res) => {
+router.post('/:event_id/unjoin', (req, res, next) => {
     console.log('hello:', req.params)
     const { event_id } = req.params
     Event
         .findByIdAndUpdate(event_id, { $pull: { attendance: req.session.currentUser._id } })
         .then(() => res.redirect(`/event`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/event/${event_id}`)
         })
 })
 
 // Delete Event
-router.post('/:event_id/delete', (req, res) => {
+router.post('/:event_id/delete', (req, res, next) => {
     const { event_id } = req.params
 
     Event
         .findByIdAndDelete(event_id)
         .then(() => res.redirect(`/event`))
         .catch(err => {
-            console.log(err)
+            next(err)
             res.redirect(`/event/${event_id}`)
         })
 })
 
 // Event Details
-router.get('/:event_id', (req, res) => {
+router.get('/:event_id', (req, res, next) => {
 
     const { event_id } = req.params
 
@@ -127,7 +127,7 @@ router.get('/:event_id', (req, res) => {
             // console.log(eventFromDB.creator)
             res.render('event/event-details', eventFromDB)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 module.exports = router

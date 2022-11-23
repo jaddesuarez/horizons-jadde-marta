@@ -32,7 +32,7 @@ router.get("/", (req, res, next) => {
 
                 res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
             })
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 
     else if (species === undefined) {
@@ -43,7 +43,7 @@ router.get("/", (req, res, next) => {
             .then(([villager]) => {
                 res.render('nookipedia/villager-detail', villager)
             })
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 
     else if (name === undefined) {
@@ -55,7 +55,7 @@ router.get("/", (req, res, next) => {
                 console.log(villagers)
                 res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
             })
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 })
 
@@ -69,7 +69,7 @@ router.get("/:villager_name", (req, res, next) => {
         .then(([villager]) => {
             res.render('nookipedia/villager-detail', villager)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
