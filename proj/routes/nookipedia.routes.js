@@ -8,7 +8,7 @@ const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
 
-// Villagers list
+// Villagers list & Filter
 router.get("/", (req, res, next) => {
     const { name, species } = req.query
 
@@ -36,16 +36,19 @@ router.get("/", (req, res, next) => {
     }
 
     else if (species === undefined) {
-        console.log('entro en buscar por nombre')
+        let villager_name = name
+
         api
-            .getOneVillager(name)
-            .then((villagers) => {
-                res.render('nookipedia/villager-detail', { villagers, speciesOptions, personalityOptions, genderOptions })
+            .getOneVillager(villager_name)
+            .then(([villager]) => {
+                res.render('nookipedia/villager-detail', villager)
             })
             .catch(err => console.log(err))
     }
+
     else if (name === undefined) {
-        console.log('etro e el de buscar especie')
+        console.log('entro en el de buscar especie')
+
         api
             .getOneSpecies(species)
             .then((villagers) => {
@@ -55,19 +58,6 @@ router.get("/", (req, res, next) => {
             .catch(err => console.log(err))
     }
 })
-
-// Villager details query
-/* router.get("/search", (req, res, next) => {
-    const { name } = req.query
-
-    api
-        .getOneVillager(name)
-        .then(([villager]) => {
-            res.render('nookipedia/villager-detail', villager)
-        })
-        .catch(err => console.log(err))
-}) */
-
 
 
 // Villager details

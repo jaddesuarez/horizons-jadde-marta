@@ -87,14 +87,21 @@
 # COMMUNITY
 - [ ] Buscar a otros usuarios
 - [ ✅ ] Lista de usuarios
+- [ ✅ ] Rutas de community
 - [ ] Buscar eventos
-- [ ] Rutas de community
 
 # BONUS
 - [ ] Chat entre users
 - [ ] Validar amigo
 - [ ] Hacer nookipedia de animales
 
+
+# BUGS
+- [ ] Logged out no sale la info de los villagers
+- [ ] Logged out no sale la info de los users en community
+- [ ] las imagenes por default de los villagers 
+- [ ] community barra no coge id 
+- [ ] renderizado condicional edit delete
 
 
 
