@@ -61,8 +61,6 @@ router.post('/login', (req, res) => {
                 return
             }
             req.session.currentUser = user
-            req.app.locals.currentUserId = user._id
-            req.app.locals.currentUserName = user.name
             res.redirect('/')
         })
         .catch(err => console.log(err))
@@ -70,7 +68,9 @@ router.post('/login', (req, res) => {
 
 
 router.get('/logout', (req, res) => {
-    req.session.destroy(() => res.redirect('/login'))
+    req.session.destroy(() => {
+        res.redirect('/login')
+    })
 })
 
 
