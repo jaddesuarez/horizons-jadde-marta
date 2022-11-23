@@ -13,8 +13,7 @@ router.get('/', (req, res, next) => {
     Event
         .find()
         .sort({ title: 1 })
-        .populate('creator')
-        .populate('attendance')
+        .populate('creator attendance')
         .then(eventArr => {
             console.log(eventArr)
             res.render('event/event-list', { eventArr })
@@ -30,8 +29,8 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 // Create Event (Handle)
 router.post('/create', (req, res, next) => {
 
-    const creator = req.session.currentUser._id
-    const attendance = req.session.currentUser._id
+    const { _id: creator } = req.session.currentUser
+    const { _id: attendance } = req.session.currentUser
     const { title, description, date } = req.body
 
     Event
@@ -47,6 +46,7 @@ router.post('/create', (req, res, next) => {
 
 // Edit Event (Render)
 router.get('/:event_id/edit', isLoggedIn, (req, res, next) => {
+
     const { event_id } = req.params
 
     Event
@@ -61,12 +61,13 @@ router.get('/:event_id/edit', isLoggedIn, (req, res, next) => {
 // Edit Event (Handle)
 router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, res, next) => {
 
-    const creator = req.session.currentUser._id
+    const { _id: creator } = req.session.currentUser
     const { title, description, date } = req.body
     const { event_id } = req.params
+    const { path: eventImg } = req.file
 
     Event
-        .findByIdAndUpdate(event_id, { title, description, creator, date, eventImg: req.file.path })
+        .findByIdAndUpdate(event_id, { title, description, creator, date, eventImg })
         .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
             next(err)
@@ -78,9 +79,10 @@ router.post('/:event_id/edit', isLoggedIn, uploader.single('imageField'), (req, 
 router.post('/:event_id/join', (req, res, next) => {
     // console.log('hello:', req.params)
     const { event_id } = req.params
+    const { _id: attendance } = req.session.currentUser
 
     Event
-        .findByIdAndUpdate(event_id, { $addToSet: { attendance: req.session.currentUser._id } })
+        .findByIdAndUpdate(event_id, { $addToSet: { attendance } })
         .then(() => res.redirect(`/event`))
         .catch(err => {
             next(err)
@@ -92,8 +94,9 @@ router.post('/:event_id/join', (req, res, next) => {
 router.post('/:event_id/unjoin', (req, res, next) => {
     console.log('hello:', req.params)
     const { event_id } = req.params
+    const { _id: attendance } = req.session.currentUser
     Event
-        .findByIdAndUpdate(event_id, { $pull: { attendance: req.session.currentUser._id } })
+        .findByIdAndUpdate(event_id, { $pull: { attendance } })
         .then(() => res.redirect(`/event`))
         .catch(err => {
             next(err)

@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
     User
         .find()
+        // .select({ username: 1})
         .sort({ title: 1 })
         .then(usersArr => {
             res.render('user/community', { usersArr })
@@ -16,14 +17,15 @@ router.get('/', (req, res) => {
         .catch(err => next(err))
 })
 
+// Profile Details
 router.get("/search", (req, res, next) => {
     const { username } = req.query
 
     User
         .find({ username })
-        .then((username) => {
-            console.log(username)
-            res.render('profile/profile', { user: username })
+        .then(([user]) => {
+            console.log(user)
+            res.render('profile/profile', { user })
         })
         .catch(err => next(err))
 })

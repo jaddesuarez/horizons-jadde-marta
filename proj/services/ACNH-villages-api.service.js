@@ -23,15 +23,19 @@ class ApiService {
     getOneSpecies = (species) => {
         return this.axiosApp.get(`villagers?species=${species}`).then((res) => res.data)
     }
+
     getAllFish = () => {
         return this.axiosApp.get('/nh/fish').then((res) => res.data)
     }
+
     getAllBugs = () => {
         return this.axiosApp.get('/nh/bugs').then((res) => res.data)
     }
+
     getAllFossils = () => {
         return this.axiosApp.get('/nh/fossils/individuals').then((res) => res.data)
     }
+
     getAllArtwork = () => {
         return this.axiosApp.get('/nh/art').then((res) => res.data)
     }
