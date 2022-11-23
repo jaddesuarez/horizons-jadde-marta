@@ -35,6 +35,7 @@ router.get('/:user_id', (req, res) => {
             })
             const isADM = req.session.currentUser.role === 'ADMIN'
             const isCurrentUser = req.session.currentUser._id === user_id
+
             res.render('profile/profile', { user, myEvents, favVillagers, currentVillagers, isADM, isCurrentUser })
         })
         .catch(err => console.log(err))

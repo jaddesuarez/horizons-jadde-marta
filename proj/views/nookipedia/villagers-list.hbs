@@ -1,40 +1,35 @@
 <h1 class="text-center">Nookipedia</h1>
 
-<form action="/wiki/search" method="GET">
-    <div class="container d-grid">
-        <input type="text" id='search-box' name="name" class="form-control mt-3 mb-2"
-            placeholder="Search for a Villager">
-        <button type="submit" class="btn btn-search mb-2">Search</button>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <select placeholder='Specie' name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                    <option selected>Species</option>
-                    {{#each speciesOptions}}
-                    <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <div class="col">
-                <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                    <option selected>Personality</option>
-                    {{#each personalityOptions}}
-                    <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <div class="col">
-                <select name="searchBar" id="searchBar" class="form-select form-select-mb mb-3">
-                    <option selected>Gender</option>
-                    {{#each genderOptions}}
-                    <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                </select>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/wiki" method="GET">
+                <div class="container d-grid">
+                    <input type="text" id='search-box' name="name" class="form-control mt-3 mb-2"
+                        placeholder="Search for a Villager">
+                    <button type="submit" class="btn btn-search mb-3">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <form action="/wiki" method="GET">
+                <div class="container">
+                    <div class="row">
+                        <select name="species" id="species" class="form-select form-select-mb mt-3 mb-2">
+                            <option selected>Species</option>
+                            {{#each speciesOptions}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-search mb-3">Search</button>
+                    </div>
+            </form>
         </div>
     </div>
-</form>
+</div>
+
 
 
 <div class="row justify-content-center flex-wrap gap-3">

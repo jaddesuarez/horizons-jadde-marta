@@ -54,19 +54,19 @@
 - [ ✅ ] Ir a Community
 - [ ✅ ] Ir a profile
 - [ ✅ ] Log In
-- [ ] Log Out
+- [ ✅ ] Log Out
 
 # NOOKIPEDIA
 - [ ✅ ] Barra de búsqueda para villagers
-- [ ] Poder filtrar por gender, personality & specie
+- [ ✅ ] Poder filtrar por especie
 - [ ✅ ] Lista de villagers
 - [ ✅ ] Rutas de nookipedia
 - [ ✅ ] Poder darle click en un villager y ver su info
 
 # VILLAGERS DETAILS
 - [ ✅ ] Card con la info del villager
-- [ ] Poder marcar como favorito
-- [ ] Poder añadirlo en tu isla
+- [ ✅ ] Poder marcar como favorito
+- [ ✅ ] Poder añadirlo en tu isla
 
 # PROFILE
 - [ ✅ ] Tener personajes favoritos

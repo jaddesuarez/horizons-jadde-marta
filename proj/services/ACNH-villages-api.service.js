@@ -20,8 +20,8 @@ class ApiService {
         return this.axiosApp.get(`villagers?name=${villagerName}`).then((res) => res.data)
     }
 
-    getSpecies = (speciesName) => {
-        return this.axiosApp.get(`villagers?species=${speciesName}`).then((res) => res.data)
+    getOneSpecies = (species) => {
+        return this.axiosApp.get(`villagers?species=${species}`).then((res) => res.data)
     }
 }
 

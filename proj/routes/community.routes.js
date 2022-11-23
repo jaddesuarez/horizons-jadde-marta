@@ -18,13 +18,13 @@ router.get('/', (req, res) => {
 
 router.get("/search", (req, res, next) => {
     const { username } = req.query
-    console.log(username)
+
     User
         .find({ username })
         .then((username) => {
+            console.log(username)
             res.render('profile/profile', { user: username })
         })
         .catch(err => console.log(err))
 })
-
 module.exports = router

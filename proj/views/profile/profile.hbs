@@ -29,7 +29,7 @@
             </div>
         </div>
         {{!-- <div class="col-md-7">
-            <img src="{{userFromDB.profileImg}}" class="rounded-start" alt="profile image">
+            <img src="{{profileImg}}" class="rounded-start" alt="profile image">
         </div> --}}
     </div>
 </div>
@@ -64,11 +64,11 @@
         <div class="card" style="width: 10rem;">
             <div class="col">
                 <div class="col">
-                    <img class="card-img-top" src="{{this.image_url}}" alt="profile image">
+                    <img class="card-img-top p-3" src="{{this.image_url}}" alt="profile image">
                 </div>
                 <div class="col">
                     <h5 class="card-title">{{this.name}}</h5>
-                    <a href="/wiki/{{this.name}}" class="btn btn-primary">INFO</a>
+                    <a href="/wiki/{{this.name}}" class="btn btn-primary d-grid mb-2">INFO</a>
                 </div>
             </div>
         </div>

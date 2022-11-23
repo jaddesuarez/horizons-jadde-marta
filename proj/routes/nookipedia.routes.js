@@ -10,26 +10,54 @@ const api = new villagersApi()
 
 // Villagers list
 router.get("/", (req, res, next) => {
+    const { name, species } = req.query
 
-    api
-        .getAllVillagers()
-        .then(villagers => {
-            const species = villagers.map(villager => villager.species)
-            let speciesOptions = [...new Set(species)]
+    let speciesOptions
+    let personalityOptions
+    let genderOptions
 
-            const personality = villagers.map(villager => villager.personality)
-            let personalityOptions = [...new Set(personality)]
+    if (name === undefined && species === undefined) {
+        console.log('entro en el de todos')
+        api
+            .getAllVillagers()
+            .then(villagers => {
+                const species = villagers.map(villager => villager.species)
+                speciesOptions = [...new Set(species)]
 
-            const gender = villagers.map(villager => villager.gender)
-            let genderOptions = [...new Set(gender)]
+                const personality = villagers.map(villager => villager.personality)
+                personalityOptions = [...new Set(personality)]
 
-            res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
-        })
-        .catch(err => console.log(err))
+                const gender = villagers.map(villager => villager.gender)
+                genderOptions = [...new Set(gender)]
+
+                res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
+            })
+            .catch(err => console.log(err))
+    }
+
+    else if (species === undefined) {
+        console.log('entro en buscar por nombre')
+        api
+            .getOneVillager(name)
+            .then((villagers) => {
+                res.render('nookipedia/villager-detail', { villagers, speciesOptions, personalityOptions, genderOptions })
+            })
+            .catch(err => console.log(err))
+    }
+    else if (name === undefined) {
+        console.log('etro e el de buscar especie')
+        api
+            .getOneSpecies(species)
+            .then((villagers) => {
+                console.log(villagers)
+                res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
+            })
+            .catch(err => console.log(err))
+    }
 })
 
 // Villager details query
-router.get("/search", (req, res, next) => {
+/* router.get("/search", (req, res, next) => {
     const { name } = req.query
 
     api
@@ -38,7 +66,9 @@ router.get("/search", (req, res, next) => {
             res.render('nookipedia/villager-detail', villager)
         })
         .catch(err => console.log(err))
-})
+}) */
+
+
 
 // Villager details
 router.get("/:villager_name", (req, res, next) => {
