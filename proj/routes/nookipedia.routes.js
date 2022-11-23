@@ -7,8 +7,6 @@ const User = require('../models/User.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
-const { getIsFav, getIsResident } = require('./../utils/myFunctions')
-
 
 // Villagers list & Filter
 router.get("/", (req, res, next) => {

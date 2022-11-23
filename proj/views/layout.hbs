@@ -24,7 +24,7 @@
                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                      aria-expanded="false">Nookipedia</a>
-                  <ul class="dropdown-menu">
+                  <ul class="drop dropdown-menu">
                      <li><a class="dropdown-item" href="/wiki">Villagers</a></li>
                      <li><a class="dropdown-item" href="/wiki/fish">Fish</a></li>
                      <li><a class="dropdown-item" href="/wiki/bugs">Bugs</a></li>
@@ -46,7 +46,7 @@
                </li>
                {{/unless}}
                {{#if currentUserId}}
-               <li class="nav-item dropdown">
+               <li class=" nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="/profile/{{currentUserId}}" role="button"
                      data-bs-toggle="dropdown" aria-expanded="false">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -56,7 +56,7 @@
                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                      </svg> Profile
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul class="drop dropdown-menu">
                      <li><a class="dropdown-item" href="/profile/{{currentUserId}}">Profile</a></li>
                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
                   </ul>
@@ -66,8 +66,6 @@
          </div>
       </div>
    </nav>
-
-
    <div class="container">
       {{{body}}}
    </div>
