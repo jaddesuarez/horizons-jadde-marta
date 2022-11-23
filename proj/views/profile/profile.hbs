@@ -94,6 +94,18 @@
             {{/each}}
         </p>
         <p class="card-text"><small class="text-muted">{{formattedDate}}</small></p>
+        {{!-- {{#if ../isCurrentUser}} --}}
+        <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
+        <form action="/event/{{this._id}}/delete" method="POST">
+            <button class="btn btn-primary">Delete</button>
+        </form>
+        {{!-- {{/if}}
+        {{#if isAdmin}} --}}
+        <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
+        <form action="/event/{{this._id}}/delete" method="POST">
+            <button class="btn btn-primary">Delete</button>
+        </form>
+        {{!-- {{/if}} --}}
     </div>
 </div>
 {{/each}}
