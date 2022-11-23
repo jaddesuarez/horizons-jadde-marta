@@ -66,3 +66,7 @@ h1 {
   --bs-btn-disabled-bg: #b8d8a4;
   --bs-btn-disabled-border-color: #b8d8a4;
 }
+
+.link-success {
+  --bs-link-color: #3e443a
+}

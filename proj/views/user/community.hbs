@@ -4,19 +4,19 @@
         <div class="container d-grid">
             <input type="text" id='search-box' name="username" class="form-control mt-3 mb-2"
                 placeholder="Search friend">
-            <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
+            <button type="submit" class="btn btn-search mb-2">Search</button>
         </div>
     </form>
-    <div class="row justify-content-center gap-3">
+    <div class="row justify-content-center gap-3 mt-2">
         {{#each usersArr}}
         <div class="card" style="width: 10rem;">
             <div class="col">
                 <div class="col">
-                    <img class="card-img-top user-img" src="{{profileImg}}" alt="profile image">
+                    <img class="card-img-top user-img p-2" src="{{profileImg}}" alt="profile image">
                 </div>
                 <div class="col">
                     <h5 class="card-title">{{name}} {{lastName}}</h5>
-                    <a href="/profile/{{_id}}" class="btn btn-primary">INFO</a>
+                    <a href="/profile/{{_id}}" class="link-success mb-3 d-grid">See Profile</a>
                 </div>
             </div>
         </div>
