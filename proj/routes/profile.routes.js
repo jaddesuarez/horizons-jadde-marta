@@ -37,7 +37,7 @@ router.get('/:user_id', (req, res, next) => {
                     return elem
                 }
             })
-            if (req.session === true) {
+            if (req.session.currentUser) {
                 isADM = req.session.currentUser.role === 'ADMIN'
                 isCurrentUser = req.session.currentUser._id === user_id
             } else {

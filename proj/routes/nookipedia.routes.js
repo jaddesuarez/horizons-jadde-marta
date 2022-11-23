@@ -7,7 +7,7 @@ const User = require('../models/User.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
-const { getFavVillagers } = require('./../middleware/route-guard')
+const { getIsFav, getIsResident } = require('./../utils/myFunctions')
 
 
 // Villagers list & Filter
@@ -43,7 +43,7 @@ router.get("/", (req, res, next) => {
         api
             .getOneVillager(villager_name)
             .then(([villager]) => {
-                res.render('nookipedia/villager-detail', villager)
+                res.render('nookipedia/villager-detail', { villager })
             })
             .catch(err => next(err))
     }
@@ -54,7 +54,6 @@ router.get("/", (req, res, next) => {
         api
             .getOneSpecies(species)
             .then((villagers) => {
-                console.log(villagers)
                 res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
             })
             .catch(err => next(err))
@@ -65,7 +64,6 @@ router.get("/", (req, res, next) => {
 // Villager details
 router.get("/:villager_name", (req, res, next) => {
     const { villager_name } = req.params
-
     let promises
     let isFav
     let isResident
@@ -75,26 +73,33 @@ router.get("/:villager_name", (req, res, next) => {
         Promise
             .all(promises)
             .then(([user, [villager]]) => {
+                // getIsFav(user, villager, isFav)
                 if (user.favVillagers.includes(villager.name)) {
                     isFav = true
                 } else {
                     isFav = null
                 }
+                // getIsResident(user, villager, isResident)
                 if (user.currentVillagers.includes(villager.name)) {
                     isResident = true
                 } else {
                     isResident = null
                 }
+                // console.log(isFav)
+                // console.log(isResident)
+
                 res.render('nookipedia/villager-detail', { villager, isFav, isResident })
             })
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     } else {
         promises = [api.getOneVillager(villager_name)]
         Promise
             .all(promises)
             .then(([villager]) => {
+                console.log(villager)
                 res.render('nookipedia/villager-detail', villager)
             })
+            .catch(err => next(err))
     }
 })
 
