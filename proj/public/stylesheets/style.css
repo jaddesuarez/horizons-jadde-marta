@@ -100,3 +100,9 @@ h1 {
   color: white;
   text-align: center;
 }
+
+#navbarContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
