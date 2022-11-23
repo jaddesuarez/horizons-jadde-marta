@@ -1,17 +1,14 @@
-const { query } = require('express')
 const express = require('express')
-const app = require('../app')
 const router = express.Router()
 
 const User = require('../models/User.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
-const { getIsFav, getIsResident } = require('./../utils/myFunctions')
 
-
-// Villagers list & Filter
+// Villagers List & Filter
 router.get("/", (req, res, next) => {
+
     const { name, species } = req.query
 
     let speciesOptions
@@ -19,7 +16,6 @@ router.get("/", (req, res, next) => {
     let genderOptions
 
     if (name === undefined && species === undefined) {
-        console.log('entro en el de todos')
         api
             .getAllVillagers()
             .then(villagers => {
@@ -60,6 +56,7 @@ router.get("/", (req, res, next) => {
     }
 })
 
+//Fishs List
 router.get('/fish', (req, res, next) => {
     api
         .getAllFish()
@@ -69,6 +66,7 @@ router.get('/fish', (req, res, next) => {
         .catch(err => next(err))
 })
 
+//Bugs List
 router.get('/bugs', (req, res, next) => {
     api
         .getAllBugs()
@@ -78,6 +76,7 @@ router.get('/bugs', (req, res, next) => {
         .catch(err => next(err))
 })
 
+//Fossils List
 router.get('/fossils', (req, res, next) => {
     api
         .getAllFossils()
@@ -87,6 +86,7 @@ router.get('/fossils', (req, res, next) => {
         .catch(err => next(err))
 })
 
+//Atwork List
 router.get('/artwork', (req, res, next) => {
     api
         .getAllArtwork()
@@ -98,41 +98,28 @@ router.get('/artwork', (req, res, next) => {
 
 // Villager details
 router.get("/:villager_name", (req, res, next) => {
+
     const { villager_name } = req.params
-    let promises
-    let isFav
-    let isResident
 
     if (req.session.currentUser) {
-        promises = [User.findById(req.session.currentUser._id), api.getOneVillager(villager_name)]
+        let promises = [User.findById(req.session.currentUser._id), api.getOneVillager(villager_name)]
         Promise
             .all(promises)
             .then(([user, [villager]]) => {
-                // getIsFav(user, villager, isFav)
-                if (user.favVillagers.includes(villager.name)) {
-                    isFav = true
-                } else {
-                    isFav = null
-                }
-                // getIsResident(user, villager, isResident)
-                if (user.currentVillagers.includes(villager.name)) {
-                    isResident = true
-                } else {
-                    isResident = null
-                }
-                // console.log(isFav)
-                // console.log(isResident)
+
+                const isFav = user.favVillagers.includes(villager.name)
+                const isResident = user.currentVillagers.includes(villager.name)
 
                 res.render('nookipedia/villager-detail', { villager, isFav, isResident })
             })
             .catch(err => next(err))
     } else {
-        promises = [api.getOneVillager(villager_name)]
+        let promises = [api.getOneVillager(villager_name)]
         Promise
             .all(promises)
-            .then(([villager]) => {
-                console.log(villager)
-                res.render('nookipedia/villager-detail', villager)
+            .then(([[villager]]) => {
+                console.log('whattt:', villager)
+                res.render('nookipedia/villager-detail', { villager })
             })
             .catch(err => next(err))
     }

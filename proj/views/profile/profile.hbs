@@ -81,35 +81,43 @@
 <hr>
 {{!-- EVENTS --}}
 <h3><strong>Your Events</strong></h3>
+<div class="container d-flex flex-wrap justify-content-start"></div>
 {{#each myEvents}}
-<div class="card mb-3">
-    <img src="{{this.eventImg}}" class="img-fluid eventImg" style="height:10rem" alt="Event image">
-    <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
-        <p class="card-text">{{this.description}}</p>
-        <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
-        <p class="card-text">Attendance:
-            {{#each attendance}}
-            <small class="text-muted">{{this.name}}| </small>
-            {{/each}}
-        </p>
-        <p class="card-text"><small class="text-muted">{{formattedDate}}</small></p>
-        {{#if ../isCurrentUser}}
-        <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
-        <form action="/event/{{this._id}}/delete" method="POST">
-            <button class="btn btn-primary">Delete</button>
-        </form>
-        {{/if}}
-        {{#if ../isAdmin}}
-        <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
-        <form action="/event/{{this._id}}/delete" method="POST">
-            <button class="btn btn-primary">Delete</button>
-        </form>
-        {{/if}}
+<div class="row mx-2">
+    <div class="card" style="width: 10rem;">
+        <div class="col">
+            <div class="col">
+                <img class="card-img-top p-3" src="{{this.ieventImg}}" alt="profile image">
+            </div>
+            <div class="col">
+                <h5 class="card-title">{{this.title}}</h5>
+                <hr>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
+                <p class="card-text">Attendance:
+                    {{#each attendance}}
+                    <small class="text-muted">{{this.name}}| </small>
+                    {{/each}}
+                </p>
+                {{#if ../isCurrentUser}}
+                <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
+                <form action="/event/{{this._id}}/delete" method="POST">
+                    <button class="btn btn-primary">Delete</button>
+                </form>
+                {{/if}}
+                {{#if ../isAdmin}}
+                <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
+                <form action="/event/{{this._id}}/delete" method="POST">
+                    <button class="btn btn-primary">Delete</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
     </div>
 </div>
 {{/each}}
+</div>
 <hr>
 <div class=" mb-4">
-    <a href="/events/create" class="btn btn-outline-primary">Create New Event</a>
+    <a href="/events/create" class="btn btn-primary">Create New Event</a>
 </div>

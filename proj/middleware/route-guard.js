@@ -14,7 +14,7 @@ function isLoggedOut(req, res, next) {
     }
 }
 
-function checkRoles(req, res, next) {
+function checkEdit(req, res, next) {
     if (req.session.currentUser._id === req.params.user_id || req.session.currentUser.role === 'ADMIN') {
         next()
     } else {
@@ -26,5 +26,5 @@ function checkRoles(req, res, next) {
 module.exports = {
     isLoggedIn,
     isLoggedOut,
-    checkRoles,
+    checkEdit,
 }
