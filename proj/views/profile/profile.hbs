@@ -21,16 +21,16 @@
                         {{/if}}
                         {{#if isADM}}
                         <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
-                            <input type="submit" value="Delete" class="btn btn-outline-danger">
+                            <input type="submit" value="Delete" class="delete btn btn-outline-danger">
                         </form>
                         {{/if}}
                     </div>
                 </div>
             </div>
         </div>
-        {{!-- <div class="col-md-7">
-            <img src="{{profileImg}}" class="rounded-start" alt="profile image">
-        </div> --}}
+        <div class="col-md-7">
+            <img src="{{user.profileImg}}" class="rounded-start" alt="profile image">
+        </div>
     </div>
 </div>
 <hr>

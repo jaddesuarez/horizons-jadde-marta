@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row">
-        <div class="col villager">
+        <div class="col">
             <img src="{{villager.image_url}}" class="card-img-top" alt="villager icon">
         </div>
         <div class="col">
@@ -10,10 +10,10 @@
             <h5 class='mb-4'><em><strong>"{{villager.quote}}"</strong></em></h5>
             <p><strong>Personality:</strong> {{villager.personality}}</p>
             <p><strong>Specie:</strong> {{villager.species}}</p>
-            <p><strong>Genre:</strong> {{villager.gender}}</p>
+            <p><strong>Gender:</strong> {{villager.gender}}</p>
             <p><strong>Birthday:</strong> {{villager.birthday_day}} of {{villager.birthday_month}}</p>
             <p><strong>Sign:</strong> {{villager.sign}}</p>
-            <p><strong>Gender:</strong> {{villager.gender}}</p>
+
             <hr>
             {{#if currentUserId}}
             <div class="row">

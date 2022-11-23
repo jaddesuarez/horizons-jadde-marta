@@ -1,19 +1,23 @@
 <div class="container">
     <h1 class="text-center">Events</h1>
     <hr>
+    <div class="container">
+        <div class="row flex-wrap gap-3">
+            {{#each eventArr}}
+            <div class="col">
+                <div class="events card p-3" style="width: 18rem;" id="event-card">
+                    <img src="{{eventImg}}" alt="event image">
+                    <h4>{{title}}</h4>
+                    <p>Attendance:
+                        {{#each attendance}}
+                        <span>{{name}} | </span>
+                        {{/each}}
+                    </p>
+                    <a href="/event/{{_id}}" class="seemore">See more</a>
+                    </p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
 
-    {{#each eventArr}}
-    <p>
-    <h4>{{title}}</h4>
-    <p>Attendance:
-        {{#each attendance}}
-        <span>{{name}} | </span>
-        {{/each}}
-    </p>
-
-    <a href="/event/{{_id}}">See more</a>
-    </p>
-    {{/each}}
-
-    <hr>
-</div>
+    </div>

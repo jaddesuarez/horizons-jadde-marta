@@ -4,7 +4,7 @@ const router = express.Router()
 
 const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
-const Event = require('../models/_Event.model')
+const Event = require('../models/Event.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 

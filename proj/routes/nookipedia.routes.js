@@ -86,7 +86,7 @@ router.get('/fossils', (req, res, next) => {
         .catch(err => next(err))
 })
 
-//Atwork List
+//Artwork List
 router.get('/artwork', (req, res, next) => {
     api
         .getAllArtwork()

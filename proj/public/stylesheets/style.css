@@ -100,3 +100,65 @@ h1 {
   color: white;
   text-align: center;
 }
+
+.fossils:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.artwork:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.fish:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.bugs:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.villager:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.user:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.user-image {
+  height: auto;
+  width: 100%;
+}
+
+.seemore {
+  color: #3e443a;
+  background-color: #b8d8a4;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.seemore:hover {
+  color: white;
+  background-color: #a6c294;
+  transition: 0.2s ease-out;
+}
+
+.events {
+  height: 24rem;
+}
+
+.events:hover {
+  transition: 0.2s ease-out;
+  box-shadow: 0 0 11px #41797c;
+}
+
+.delete {
+  background-color: #3e443a;
+}
