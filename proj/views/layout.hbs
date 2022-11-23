@@ -12,7 +12,7 @@
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg navbar-dark mb-5">
+   <nav class="navbar navbar-expand-lg navbar-dark mb-4">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">{{appTitle}}</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -21,8 +21,16 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-               <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/wiki">Nookipedia</a>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                     aria-expanded="false">Nookipedia</a>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="/wiki">Villagers</a></li>
+                     <li><a class="dropdown-item" href="/wiki/fish">Fish</a></li>
+                     <li><a class="dropdown-item" href="/wiki/bugs">Bugs</a></li>
+                     <li><a class="dropdown-item" href="/wiki/fossils">Fossils</a></li>
+                     <li><a class="dropdown-item" href="/wiki/artwork">Artwork</a></li>
+                  </ul>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="/community">Community</a>

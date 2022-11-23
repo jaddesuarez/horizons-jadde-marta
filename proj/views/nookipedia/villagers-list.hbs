@@ -1,5 +1,5 @@
 <h1 class="text-center">Nookipedia</h1>
-
+<h3 class="text-center">Villagers</h3>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -35,7 +35,7 @@
 <div class="row justify-content-center flex-wrap gap-3">
     {{#each villagers}}
     <div class="card" style="width: 10rem;">
-        <img src="http://acnhapi.com/v1/icons/villagers/{{id}}" class="card-img-top" alt="villager icon">
+        <img src="{{image_url}}" class="card-img-top villager-image" alt="villager icon">
         <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
             <p class="card-text">{{phrase}}</p>
@@ -46,14 +46,3 @@
     {{/each}}
 
 </div>
-
-
-{{!--
-<script>
-    function sendData(name) {
-        fetch('getNames',
-            method = 'POST',
-            headers
-        )
-    }
-</script> --}}

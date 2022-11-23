@@ -10,7 +10,11 @@ body {
 }
 
 .navbar a {
-  color: white;
+  color: black;
+}
+
+.navbar ul {
+  color: #41797c
 }
 
 h1 {
@@ -69,4 +73,9 @@ h1 {
 
 .link-success {
   --bs-link-color: #3e443a
+}
+
+.villager-image {
+  height: 50%;
+  padding: 1em;
 }

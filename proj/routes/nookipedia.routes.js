@@ -61,6 +61,41 @@ router.get("/", (req, res, next) => {
     }
 })
 
+router.get('/fish', (req, res, next) => {
+    api
+        .getAllFish()
+        .then(fish => {
+            res.render('nookipedia/fish-list', { fish })
+        })
+        .catch(err => next(err))
+})
+
+router.get('/bugs', (req, res, next) => {
+    api
+        .getAllBugs()
+        .then(bugs => {
+            res.render('nookipedia/bugs-list', { bugs })
+        })
+        .catch(err => next(err))
+})
+
+router.get('/fossils', (req, res, next) => {
+    api
+        .getAllFossils()
+        .then(fossils => {
+            res.render('nookipedia/fossils-list', { fossils })
+        })
+        .catch(err => next(err))
+})
+
+router.get('/artwork', (req, res, next) => {
+    api
+        .getAllArtwork()
+        .then(artwork => {
+            res.render('nookipedia/artwork-list', { artwork })
+        })
+        .catch(err => next(err))
+})
 
 // Villager details
 router.get("/:villager_name", (req, res, next) => {

@@ -72,7 +72,7 @@
 - [ ✅ ] Tener personajes favoritos
 - [ ✅ ] Poder poner los que tienes en tu isla
 - [ ✅ ] Boton de crear eventos 
-- [ ] Que se vean tus eventos 
+- [ ✅ ] Que se vean tus eventos 
 - [ ✅ ] Poder editar tus datos 
 - [ ✅ ] Borra tu cuenta
 - [ ✅ ] Rutas de profile
@@ -97,11 +97,11 @@
 
 
 # BUGS
-- [ ] Logged out no sale la info de los villagers
-- [ ] Logged out no sale la info de los users en community
-- [ ] las imagenes por default de los villagers 
+- [ ✅ ] Logged out no sale la info de los villagers
+- [ ✅ ] Logged out no sale la info de los users en community
+- [ ✅ ] las imagenes por default de los villagers 
 - [ ] community barra no coge id 
-- [ ] renderizado condicional edit delete
+- [ ✅ ] renderizado condicional edit delete
 
 
 
