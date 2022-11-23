@@ -34,7 +34,7 @@
     </div>
 </div>
 <hr>
-{{!-- VER TUS PERSONAJES --}}
+{{!-- RESIDENTS --}}
 <h3><strong>Your Villagers</strong></h3>
 <div class="container d-flex flex-wrap justify-content-start">
     {{#each currentVillagers}}
@@ -56,7 +56,7 @@
 
 
 <hr>
-{{!-- VER TUS FAVORITOS --}}
+{{!-- FAV VILLAGERS --}}
 <h3><strong>Your Favourites</strong></h3>
 <div class="container d-flex flex-wrap justify-content-start">
     {{#each favVillagers}}
@@ -79,7 +79,7 @@
 
 
 <hr>
-{{!-- VER TUS EVENTOS --}}
+{{!-- EVENTS --}}
 <h3><strong>Your Events</strong></h3>
 {{#each myEvents}}
 <div class="card mb-3">
@@ -94,18 +94,18 @@
             {{/each}}
         </p>
         <p class="card-text"><small class="text-muted">{{formattedDate}}</small></p>
-        {{!-- {{#if ../isCurrentUser}} --}}
+        {{#if ../isCurrentUser}}
         <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
         <form action="/event/{{this._id}}/delete" method="POST">
             <button class="btn btn-primary">Delete</button>
         </form>
-        {{!-- {{/if}}
-        {{#if isAdmin}} --}}
+        {{/if}}
+        {{#if ../isAdmin}}
         <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
         <form action="/event/{{this._id}}/delete" method="POST">
             <button class="btn btn-primary">Delete</button>
         </form>
-        {{!-- {{/if}} --}}
+        {{/if}}
     </div>
 </div>
 {{/each}}
