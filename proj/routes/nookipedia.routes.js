@@ -1,7 +1,9 @@
 const { query } = require('express')
 const express = require('express')
+const app = require('../app')
 const router = express.Router()
 
+const User = require('../models/User.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 

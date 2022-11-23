@@ -16,8 +16,8 @@ const eventSchema = new Schema(
         }],
         eventImg: {
             type: String,
-            default: '',
-            set: value => value === '' ? '' : value
+            default: '/images/event-default.png',
+            set: value => value === '' ? '/images/event-default.png' : value
         }
     },
     {

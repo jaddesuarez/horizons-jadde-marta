@@ -5,7 +5,7 @@
 
             <h1>Edit Event</h1>
             <hr>
-            <form action="/event/{{event._id}}/edit" method="POST">
+            <form action="/event/{{event._id}}/edit" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
@@ -24,8 +24,8 @@
                         <input type="text" class="form-control" name="description" value="{{event.description}}">
                     </div>
                     <div class="mb-3">
-                        <label for="eventImg" class="form-label">Img</label>
-                        <input type="file" class="form-control" id="imageUrl" name="eventImg" value="{{eventImg}}">
+                        <label for="imageUrl" class="form-label">Event Image</label>
+                        <input type="file" class="form-control" id="imageUrl" name="imageField" required>
                     </div>
                 </div>
                 <div class="d-grid mt-5">

@@ -68,7 +68,7 @@ router.get('/:user_id', (req, res) => {
 
 })
 
-// Edit Profile
+// Edit Profile (Render)
 router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
     const { user_id } = req.params
 
@@ -80,6 +80,7 @@ router.get('/:user_id/edit', isLoggedIn, checkRoles, (req, res) => {
         .catch(err => console.log(err))
 })
 
+// Edit Profile (Handle)
 router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageField'), (req, res) => {
     const { email, username, name, lastName, islandName, fruit } = req.body
     const { user_id } = req.params
@@ -94,7 +95,7 @@ router.post('/:user_id/edit', isLoggedIn, checkRoles, uploader.single('imageFiel
 
 // Add Villager to Fav
 router.post('/:villager_name/addFav', isLoggedIn, (req, res) => {
-    console.log('hello:', req.params)
+    // console.log('Add Villager to Fav:', req.params)
     const { villager_name } = req.params
 
     User
@@ -106,13 +107,41 @@ router.post('/:villager_name/addFav', isLoggedIn, (req, res) => {
         })
 })
 
+// Remove Villager from Fav
+router.post('/:villager_name/quitFav', isLoggedIn, (req, res) => {
+    // console.log('Remove Villager from Fav:', req.params)
+    const { villager_name } = req.params
+
+    User
+        .findByIdAndUpdate(req.session.currentUser._id, { $pull: { favVillagers: villager_name } })
+        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/`)
+        })
+})
+
 // Add Villager to Island
 router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
-    console.log('hello:', req.params)
+    // console.log('Add Villager to Island:', req.params)
     const { villager_name } = req.params
 
     User
         .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { currentVillagers: villager_name } })
+        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .catch(err => {
+            console.log(err)
+            res.redirect(`/`)
+        })
+})
+
+// Remove Villager from Island
+router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
+    // console.log('Remove Villager from Island:', req.params)
+    const { villager_name } = req.params
+
+    User
+        .findByIdAndUpdate(req.session.currentUser._id, { $pull: { currentVillagers: villager_name } })
         .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
         .catch(err => {
             console.log(err)
