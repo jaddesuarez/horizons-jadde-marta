@@ -1,11 +1,12 @@
 const express = require('express')
-const { isLoggedIn, isLoggedOut, checkRoles } = require('./../middleware/route-guard')
+const { isLoggedIn, checkRoles } = require('./../middleware/route-guard')
 const router = express.Router()
 
 const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
+const { request } = require('../app')
 const api = new villagersApi()
 
 
@@ -14,6 +15,9 @@ router.get('/:user_id', (req, res) => {
     const { user_id } = req.params
 
     const promises = [User.findById(user_id), Event.find().populate('creator').populate('attendance'), api.getAllVillagers()]
+
+    let isADM
+    let isCurrentUser
 
     Promise
         .all(promises)
@@ -33,8 +37,13 @@ router.get('/:user_id', (req, res) => {
                     return elem
                 }
             })
-            const isADM = req.session.currentUser.role === 'ADMIN'
-            const isCurrentUser = req.session.currentUser._id === user_id
+            if (req.session === true) {
+                isADM = req.session.currentUser.role === 'ADMIN'
+                isCurrentUser = req.session.currentUser._id === user_id
+            } else {
+                isADM = null
+                isCurrentUser = null
+            }
             res.render('profile/profile', { user, myEvents, favVillagers, currentVillagers, isADM, isCurrentUser })
         })
         .catch(err => console.log(err))
@@ -100,7 +109,7 @@ router.post('/:villager_name/addFav', isLoggedIn, (req, res) => {
 
     User
         .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { favVillagers: villager_name } })
-        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .then(() => res.redirect(`/wiki/${villager_name}`))
         .catch(err => {
             console.log(err)
             res.redirect(`/`)
@@ -114,7 +123,7 @@ router.post('/:villager_name/quitFav', isLoggedIn, (req, res) => {
 
     User
         .findByIdAndUpdate(req.session.currentUser._id, { $pull: { favVillagers: villager_name } })
-        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .then(() => res.redirect(`/wiki/${villager_name}`))
         .catch(err => {
             console.log(err)
             res.redirect(`/`)
@@ -128,7 +137,7 @@ router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
 
     User
         .findByIdAndUpdate(req.session.currentUser._id, { $addToSet: { currentVillagers: villager_name } })
-        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .then(() => res.redirect(`/wiki/${villager_name}`))
         .catch(err => {
             console.log(err)
             res.redirect(`/`)
@@ -136,13 +145,13 @@ router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
 })
 
 // Remove Villager from Island
-router.post('/:villager_name/addResident', isLoggedIn, (req, res) => {
+router.post('/:villager_name/quitResident', isLoggedIn, (req, res) => {
     // console.log('Remove Villager from Island:', req.params)
     const { villager_name } = req.params
 
     User
         .findByIdAndUpdate(req.session.currentUser._id, { $pull: { currentVillagers: villager_name } })
-        .then(() => res.redirect(`/profile/${req.session.currentUser._id}`))
+        .then(() => res.redirect(`/wiki/${villager_name}`))
         .catch(err => {
             console.log(err)
             res.redirect(`/`)

@@ -5,7 +5,7 @@ const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
-const { isLoggedIn, checkEdit, isLoggedOut, checkRoles } = require('./../middleware/route-guard')
+const { isLoggedIn } = require('./../middleware/route-guard')
 
 // List Events
 router.get('/', (req, res) => {
@@ -33,7 +33,6 @@ router.post('/create', (req, res) => {
     const creator = req.session.currentUser._id
     const attendance = req.session.currentUser._id
     const { title, description, date } = req.body
-    // console.log(`holiii`, creator)
 
     Event
         .create({ title, description, creator, date, attendance })
@@ -124,7 +123,6 @@ router.get('/:event_id', (req, res) => {
         .findById(event_id)
         .populate('creator')
         .then(eventFromDB => {
-            // console.log(eventFromDB.creator)
             res.render('event/event-details', eventFromDB)
         })
         .catch(err => console.log(err))

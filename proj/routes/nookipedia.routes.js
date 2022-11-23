@@ -7,6 +7,8 @@ const User = require('../models/User.model')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
+const { getFavVillagers } = require('./../middleware/route-guard')
+
 
 // Villagers list
 router.get("/", (req, res, next) => {
@@ -44,12 +46,36 @@ router.get("/search", (req, res, next) => {
 router.get("/:villager_name", (req, res, next) => {
     const { villager_name } = req.params
 
-    api
-        .getOneVillager(villager_name)
-        .then(([villager]) => {
-            res.render('nookipedia/villager-detail', villager)
-        })
-        .catch(err => console.log(err))
+    let promises
+    let isFav
+    let isResident
+
+    if (req.session.currentUser) {
+        promises = [User.findById(req.session.currentUser._id), api.getOneVillager(villager_name)]
+        Promise
+            .all(promises)
+            .then(([user, [villager]]) => {
+                if (user.favVillagers.includes(villager.name)) {
+                    isFav = true
+                } else {
+                    isFav = null
+                }
+                if (user.currentVillagers.includes(villager.name)) {
+                    isResident = true
+                } else {
+                    isResident = null
+                }
+                res.render('nookipedia/villager-detail', { villager, isFav, isResident })
+            })
+            .catch(err => console.log(err))
+    } else {
+        promises = [api.getOneVillager(villager_name)]
+        Promise
+            .all(promises)
+            .then(([villager]) => {
+                res.render('nookipedia/villager-detail', villager)
+            })
+    }
 })
 
 
