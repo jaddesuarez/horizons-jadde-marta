@@ -8,14 +8,8 @@ require("./config")(app)
 app.locals.appTitle = 'HORIZONS'
 require('./config/session.config')(app)
 
-app.use((req, res, next) => {
-    if (req.session.currentUser) {
-        app.locals.currentUserId = req.session.currentUser._id
-    } else {
-        app.locals.currentUserId = null
-    }
-    next()
-})
+const { localSessionStorer } = require("./middleware/local-session-storer")
+app.use(localSessionStorer)
 
 require("./routes")(app)
 require("./error-handling")(app)

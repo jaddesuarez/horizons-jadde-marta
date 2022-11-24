@@ -7,18 +7,7 @@ const User = require('./../models/User.model')
 // List Profiles
 router.get('/', (req, res) => {
 
-    let error
-    const { errorMessage } = req.query
-    if (req.query.errorMessage === undefined) {
-        error = {
-            canView: false
-        }
-    } else {
-        error = {
-            errorMessage,
-            canView: true
-        }
-    }
+    const { errorMessage: error } = req.query
 
     User
         .find()
@@ -38,7 +27,7 @@ router.get("/search", (req, res, next) => {
     User
         .find({ username })
         .then(([user]) => {
-            if (user === undefined) {
+            if (!user) {
                 res.redirect('/community?errorMessage=USER DOES NOT EXIST')
             } else {
                 res.redirect(`/profile/${user._id}`)

@@ -5,7 +5,7 @@ const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
-const { formatDate } = require('../utils/myFunctions')
+const { formatEventsDate } = require('../utils/myFunctions')
 const { isLoggedIn } = require('./../middleware/route-guard')
 
 // List Events
@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
         .sort({ title: 1 })
         .populate('creator attendance')
         .then(eventArr => {
-            console.log(eventArr)
             res.render('event/event-list', { eventArr })
         })
         .catch(err => next(err))
@@ -38,7 +37,8 @@ router.post('/create', (req, res, next) => {
         .create({ title, description, creator, date, attendance })
         .then(() => {
             res.redirect(`/profile/${creator}`)
-        }).catch(err => {
+        })
+        .catch(err => {
             next(err)
             res.redirect('/event/create')
         })
@@ -93,9 +93,10 @@ router.post('/:event_id/join', (req, res, next) => {
 
 // Unjoin Event
 router.post('/:event_id/unjoin', (req, res, next) => {
-    console.log('hello:', req.params)
+
     const { event_id } = req.params
     const { _id: attendance } = req.session.currentUser
+
     Event
         .findByIdAndUpdate(event_id, { $pull: { attendance } })
         .then(() => res.redirect(`/event`))
@@ -107,6 +108,7 @@ router.post('/:event_id/unjoin', (req, res, next) => {
 
 // Delete Event
 router.post('/:event_id/delete', (req, res, next) => {
+
     const { event_id } = req.params
 
     Event
@@ -127,7 +129,7 @@ router.get('/:event_id', (req, res, next) => {
         .findById(event_id)
         .populate('creator')
         .then(eventFromDB => {
-            [eventFromDB] = formatDate([eventFromDB])
+            [eventFromDB] = formatEventsDate([eventFromDB])
             res.render('event/event-details', eventFromDB)
         })
         .catch(err => next(err))
