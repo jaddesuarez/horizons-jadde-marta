@@ -1,23 +1,25 @@
-<div class="container">
+<div class="container mt-4">
     <h1 class="text-center">Events</h1>
     <hr>
     <div class="container">
-        <div class="row flex-wrap gap-3">
+        <div class="row flex-wrap">
             {{#each eventArr}}
             <div class="col">
-                <div class="events card p-3" style="width: 18rem;" id="event-card">
-                    <img src="{{eventImg}}" alt="event image">
-                    <h4>{{title}}</h4>
-                    <p>Attendance:
+                <div class="events card p-2" style="width: 18rem;" id="event-card">
+                    <img src="{{eventImg}}" alt="event image" style="border-radius: 5px">
+              
+                    <h4 class="mt-3"><strong>{{title}}</strong></h4>
+                    <p><strong>Creator:</strong> @{{creator.username}}</p>
+                    <p><strong>Attendance:</strong>
                         {{#each attendance}}
-                        <span>{{name}} | </span>
+                        <span>{{name}},  </span>
                         {{/each}}
                     </p>
-                    <a href="/event/{{_id}}" class="seemore">See more</a>
-                    </p>
+                    <a href="/event/{{_id}}" class="seemore mt-5">See more</a>
+                  
                 </div>
             </div>
             {{/each}}
         </div>
-
-    </div>
+        </div>
+        </div>
