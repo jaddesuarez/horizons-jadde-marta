@@ -3,14 +3,13 @@
   src: url('https: //fonts.google.com/specimen/Gorditas?preview.text=animal%20crossing&preview.text_type=custom&query=gordi&category=Sans+Serif,Display,Handwriting');
 }
 
-
-
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("../images/background.jpeg");
   background-size: 50%;
   background-repeat: repeat;
 }
+
 
 .navbar {
   background-color: #41797c;
@@ -21,7 +20,9 @@ body {
 }
 
 .drop {
-  background-color: #41797c
+  background-color: #41797c;
+  border: none;
+    cursor: pointer;
 }
 
 h1 {
@@ -214,13 +215,14 @@ width: 100vh;
 .index {
   color: white;
     background-color: #41797c;
+
 }
 
 .index:hover {
   color:white;
   background-color:#3e443a;
+ 
 }
-
 
 .title {
   text-shadow: 2px 7px 5px rgba(95, 95, 95, 0.3),
