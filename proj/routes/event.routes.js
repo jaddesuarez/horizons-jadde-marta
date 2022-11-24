@@ -127,7 +127,7 @@ router.get('/:event_id', (req, res, next) => {
 
     Event
         .findById(event_id)
-        .populate('creator')
+        .populate('creator attendance')
         .then(eventFromDB => {
             [eventFromDB] = formatEventsDate([eventFromDB])
             res.render('event/event-details', eventFromDB)

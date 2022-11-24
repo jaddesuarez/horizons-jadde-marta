@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <h1 class="text-center">Events</h1>
+    <h1 class="titlepage text-center">Events</h1>
     <hr>
     <div class="container">
         <div class="row flex-wrap">
@@ -8,14 +8,14 @@
                 <div class="events card p-2" style="width: 18rem;" id="event-card">
                     <img src="{{eventImg}}" alt="event image" style="border-radius: 5px">
               
-                    <h4 class="mt-3"><strong>{{title}}</strong></h4>
-                    <p><strong>Creator:</strong> @{{creator.username}}</p>
-                    <p><strong>Attendance:</strong>
+                    <h4 class="mt-3 ms-3 mb-3"><strong>{{title}}</strong></h4>
+                    <p class="ms-3 mt-3"><strong>Creator:</strong> @{{creator.username}}</p>
+                    <p class="ms-3"><strong>Attendance:</strong>
                         {{#each attendance}}
-                        <span>{{name}},  </span>
+                        <span>{{name}} |  </span>
                         {{/each}}
                     </p>
-                    <a href="/event/{{_id}}" class="seemore mt-5">See more</a>
+                    <a href="/event/{{_id}}" class="seemore mt-4">See more</a>
                   
                 </div>
             </div>

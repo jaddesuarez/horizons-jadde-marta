@@ -239,10 +239,23 @@ background-color: #41797c;
   background-color: #b8d8a4;
     color: #262d21;
     transition: transform .8s;
+
 }
 
 .join:hover {
 background-color: #41797c;
+  color: white ;
+    transform: scale(1.1)
+}
+.join2 {
+  background-color: #b8d8a4;
+    color: white;
+    transition: transform .8s;
+    width: 5vw;
+}
+
+.join2:hover {
+background-color: #b8d8a4;
   color: white ;
     transform: scale(1.1)
 }
@@ -253,6 +266,17 @@ background-color: #41797c;
   transition: transform .8s;
 }
 .unj:hover {
+  background-color:#41797c;
+  color: white;
+    transform: scale(1.1)
+}
+.unj2 {
+  background-color: #41797c;
+  color: white;
+  transition: transform .8s;
+  width: 5vw;
+}
+.unj2:hover {
   background-color:#41797c;
   color: white;
     transform: scale(1.1)
@@ -308,6 +332,20 @@ background-image: url('https: //img.freepik.com/fotos-premium/fondo-papel-blanco
   color:#282772;
 }
 
-
-background-size: 50%;
-background-repeat: repeat;
+.name {
+  font-family: FinkHeavy;
+  font-size: 60px;
+  color: #3e443a;
+  text-shadow: 2px 7px 5px rgba(95, 95, 95, 0.3),
+      0px -4px 10px rgba(255, 255, 255, 0.3);
+}
+.name2 {
+  font-family: FinkHeavy;
+    font-size: 25px;
+    color: #3e443a;
+}
+.titlepage {
+    color: #3e443a;
+    text-shadow: 2px 7px 5px rgba(95, 95, 95, 0.3),
+        0px -4px 10px rgba(255, 255, 255, 0.3);
+}
