@@ -4,6 +4,11 @@
         <div class="container d-grid">
             <input type="text" id='search-box' name="username" class="form-control mt-3 mb-2"
                 placeholder="Search friend">
+            {{#if error.canView}}
+            <div id="errorMessage">
+                <p>{{error.errorMessage}}</p>
+            </div>
+            {{/if}}
             <button type="submit" class="btn btn-search mb-2">Search</button>
         </div>
     </form>

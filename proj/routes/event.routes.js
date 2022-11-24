@@ -5,6 +5,7 @@ const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
 
+const { formatDate } = require('../utils/myFunctions')
 const { isLoggedIn } = require('./../middleware/route-guard')
 
 // List Events
@@ -126,6 +127,7 @@ router.get('/:event_id', (req, res, next) => {
         .findById(event_id)
         .populate('creator')
         .then(eventFromDB => {
+            [eventFromDB] = formatDate([eventFromDB])
             res.render('event/event-details', eventFromDB)
         })
         .catch(err => next(err))

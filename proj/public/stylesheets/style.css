@@ -23,7 +23,8 @@ h1 {
 
 #errorMessage {
   background-color: rgb(255, 202, 202);
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   right: 10px;
   bottom: 10px;
   padding: 5px;

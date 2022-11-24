@@ -22,11 +22,11 @@ router.get("/", (req, res, next) => {
                 const species = villagers.map(villager => villager.species)
                 speciesOptions = [...new Set(species)]
 
-                const personality = villagers.map(villager => villager.personality)
-                personalityOptions = [...new Set(personality)]
+                // const personality = villagers.map(villager => villager.personality)
+                // personalityOptions = [...new Set(personality)]
 
-                const gender = villagers.map(villager => villager.gender)
-                genderOptions = [...new Set(gender)]
+                // const gender = villagers.map(villager => villager.gender)
+                // genderOptions = [...new Set(gender)]
 
                 res.render('nookipedia/villagers-list', { villagers, speciesOptions, personalityOptions, genderOptions })
             })
@@ -45,7 +45,6 @@ router.get("/", (req, res, next) => {
     }
 
     else if (name === undefined) {
-        console.log('entro en el de buscar especie')
 
         api
             .getOneSpecies(species)

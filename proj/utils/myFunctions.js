@@ -1,23 +1,37 @@
-function getIsFav(user, villager, isFav) {
-    if (user.favVillagers.includes(villager.name)) {
-        isFav = true
-    } else {
-        isFav = null
-    }
-    return isFav
+
+function getfavVillagers(villagers, user) {
+    let favVillagers = villagers.filter(elem => {
+        if (user.favVillagers.includes(elem.name)) {
+            return elem
+        }
+    })
+    return favVillagers
 }
 
-function getIsResident(user, villager, isResident) {
-    if (user.currentVillagers.includes(villager.name)) {
-        isResident = true
-    } else {
-        isResident = null
-    }
-    return isResident
+function getcurrentVillagers(villagers, user) {
+    let currentVillagers = villagers.filter(elem => {
+        if (user.currentVillagers.includes(elem.name)) {
+            return elem
+        }
+    })
+    return currentVillagers
 }
 
+function formatDate(events) {
+    let formattedEvents = events.map(elem => {
+        formattedDate = {
+            day: elem.date.getDate(),
+            month: elem.date.getMonth(),
+            year: elem.date.getFullYear()
+        }
+        return { ...elem._doc, formattedDate }
+    })
+
+    return formattedEvents
+}
 
 module.exports = {
-    getIsFav,
-    getIsResident
+    getfavVillagers,
+    getcurrentVillagers,
+    formatDate
 }
