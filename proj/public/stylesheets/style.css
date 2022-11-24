@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Gorditas';
+  src: url('https: //fonts.google.com/specimen/Gorditas?preview.text=animal%20crossing&preview.text_type=custom&query=gordi&category=Sans+Serif,Display,Handwriting');
+}
+
+
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url("../images/background.jpeg");
@@ -80,6 +87,19 @@ h1 {
   padding: 1em;
 }
 
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* 
 .horizons {
   padding: 0px;
   margin: 0px;
@@ -87,19 +107,32 @@ h1 {
   width: 100%;
   position: relative;
   background-size: cover;
-}
+  display: flex;
+  align-content: center;
+ /*  font-family: 'Gorditas'; }*/
+
+
 
 .horizons img {
-  height: auto;
-  width: 100%;
-}
-
-.horizons h3 {
-  justify-content: center;
+  
+} 
+ 
+/* .horizons h1 {
   position: absolute;
   color: white;
-  text-align: center;
+  letter-spacing: -2px;
+  transition: 600ms ease;
+    font-variation-settings: "wght" 311;
+text-transform: uppercase;
+text-align: center;
+width: 100vh;
 }
+
+.horizons h1:hover {
+      font-variation-settings: "wght" 582;
+      letter-spacing: 1px;
+    }
+ */
 
 #navbarContent {
   display: flex;
@@ -167,4 +200,37 @@ h1 {
 
 .delete {
   background-color: #3e443a;
+}
+
+.footer a{
+  background-color:#41797c;
+}
+.footer a:hover{
+  background-color:#93ad83;
+  color: white;
+}
+
+.index {
+  color: white;
+    background-color: #41797c;
+}
+
+.index:hover {
+  color:white;
+  background-color:#3e443a;
+}
+
+
+.title {
+  text-shadow: 2px 7px 5px rgba(95, 95, 95, 0.3),
+      0px -4px 10px rgba(255, 255, 255, 0.3);
+      transition: transform .8s;
+}
+.title:hover {
+transform: scale(1.2)
+}
+
+.still {
+  text-align: center;
+  margin-bottom: 15px;
 }
