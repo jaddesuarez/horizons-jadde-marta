@@ -18,7 +18,7 @@ router.get('/signup', isLoggedOut, (req, res) => {
 // Signup form (handle)
 router.post('/signup', isLoggedOut, (req, res) => {
 
-    const { email, username, name, plainPassword } = req.body
+    const { email, username, name, lastName, plainPassword } = req.body
 
     bcryptjs
         .genSalt(saltRounds)
@@ -26,7 +26,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
             return bcryptjs.hash(plainPassword, salt)
         })
         .then(hashedPassword => {
-            return User.create({ email, username, name, password: hashedPassword })
+            return User.create({ email, username, name, lastName, password: hashedPassword })
         })
         .then(() => res.redirect('/login'))
         .catch(err => {

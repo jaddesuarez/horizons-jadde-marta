@@ -84,7 +84,7 @@ router.post('/:event_id/join', (req, res, next) => {
 
     Event
         .findByIdAndUpdate(event_id, { $addToSet: { attendance } })
-        .then(() => res.redirect(`/event`))
+        .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
             next(err)
             res.redirect(`/event/${event_id}`)
@@ -99,7 +99,7 @@ router.post('/:event_id/unjoin', (req, res, next) => {
 
     Event
         .findByIdAndUpdate(event_id, { $pull: { attendance } })
-        .then(() => res.redirect(`/event`))
+        .then(() => res.redirect(`/event/${event_id}`))
         .catch(err => {
             next(err)
             res.redirect(`/event/${event_id}`)
@@ -129,8 +129,12 @@ router.get('/:event_id', (req, res, next) => {
         .findById(event_id)
         .populate('creator')
         .then(eventFromDB => {
+
             [eventFromDB] = formatEventsDate([eventFromDB])
-            res.render('event/event-details', eventFromDB)
+            console.log(eventFromDB)
+
+            const isJoin = eventFromDB.attendance.includes(req.session.currentUser?._id)
+            res.render('event/event-details', { eventFromDB, isJoin })
         })
         .catch(err => next(err))
 })
