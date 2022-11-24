@@ -95,23 +95,29 @@
                     <hr>
                     <p class="card-text">{{this.description}}</p>
                     <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
+                    <p class="card-text"><small
+                            class="text-muted">{{this.formattedDate.day}}/{{this.formattedDate.month}}/{{this.formattedDate.year}}</small>
+                    </p>
                     <p class="card-text">Attendance:
                         {{#each attendance}}
                         <small class="text-muted">{{this.name}}| </small>
                         {{/each}}
                     </p>
-                    {{#if ../isCurrentUser}}
-                    <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
-                    <form action="/event/{{this._id}}/delete" method="POST">
-                        <button class="btn btn-primary">Delete</button>
-                    </form>
-                    {{/if}}
-                    {{#if ../isAdmin}}
-                    <a href="/event/{{this._id}}/edit" class="btn btn-primary">Edit</a>
-                    <form action="/event/{{this._id}}/delete" method="POST">
-                        <button class="btn btn-primary">Delete</button>
-                    </form>
-                    {{/if}}
+                    <a href="/event/{{this._id}}" class="btn btn-primary d-grid mb-2">INFO</a>
+                    <div class="d-flex flex-nowrap mb-2">
+                        {{#if ../isCurrentUser}}
+                        <a href="/event/{{this._id}}/edit" class="btn btn-outline-success mr-2">Edit</a>
+                        <form action="/event/{{this._id}}/delete" method="POST">
+                            <button class="btn btn-outline-danger">Delete</button>
+                        </form>
+                        {{/if}}
+                        {{#if ../isAdmin}}
+                        <a href="/event/{{this._id}}/edit" class="btn btn-outline-success mr-2">Edit</a>
+                        <form action="/event/{{this._id}}/delete" method="POST">
+                            <button class="btn btn-outline-danger">Delete</button>
+                        </form>
+                        {{/if}}
+                    </div>
                 </div>
             </div>
         </div>

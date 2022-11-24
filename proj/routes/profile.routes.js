@@ -5,6 +5,7 @@ const router = express.Router()
 const uploader = require('../config/uploader.config')
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
+const { getfavVillagers, getcurrentVillagers, formatDate } = require('../utils/myFunctions')
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
@@ -15,28 +16,18 @@ router.get('/:user_id', (req, res, next) => {
 
     const promises = [
         User.findById(user_id),
-        Event.find().populate('creator attendance'),
+        Event.find({ creator: user_id }).populate('creator attendance'),
         api.getAllVillagers()
     ]
 
     Promise
         .all(promises)
         .then(([user, events, villagers]) => {
-            const favVillagers = villagers.filter(elem => {
-                if (user.favVillagers.includes(elem.name)) {
-                    return elem
-                }
-            })
-            const currentVillagers = villagers.filter(elem => {
-                if (user.currentVillagers.includes(elem.name)) {
-                    return elem
-                }
-            })
-            const myEvents = events.filter(elem => {
-                if (elem.creator._id.toString() === user_id) {
-                    return elem
-                }
-            })
+
+            const favVillagers = getfavVillagers(villagers, user)
+            const currentVillagers = getcurrentVillagers(villagers, user)
+
+            myEvents = formatDate(events)
 
             const isADM = req.session.currentUser?.role === 'ADMIN'
             const isCurrentUser = req.session.currentUser?._id === user_id
@@ -44,34 +35,6 @@ router.get('/:user_id', (req, res, next) => {
             res.render('profile/profile', { user, myEvents, favVillagers, currentVillagers, isADM, isCurrentUser })
         })
         .catch(err => next(err))
-
-    // User
-    //     .findById(user_id)
-    //     .then(userFromDB => {
-
-    //         Event
-    //             .find()
-    //             .populate('creator')
-    //             .then(eventsFromDB => {
-
-    //                 let formattedDate = eventsFromDB[0].date.toString().split("T")[0].split("01")[0]
-
-    //                 const formattedEvents = eventsFromDB.map(event => {
-    //                     return { ...event._doc, formattedDate }
-    //                 })
-
-    //                 res.render('profile/profile', { userFromDB, formattedEvents })
-
-    //                 // console.log(eventsFromDB[0].date.toString().split("T")[0].split("01")[0])
-    //                 // console.log(formattedEvents)
-
-    //                 /* isADM: req.session.currentUser.role === 'ADMIN',
-    //                 isCurrentUser: req.session.currentUser._id === user_id */
-    //             })
-    //             .catch(err => console.log(err))
-    //     })
-    //     .catch(err => console.log(err))
-
 })
 
 // Edit Profile (Render)
