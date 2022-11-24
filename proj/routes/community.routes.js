@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     User
         .find()
         .select({ username: 1, name: 1, lastName: 1, profileImg: 1 })
-        .sort({ title: 1 })
+        .sort({ name: 1 })
         .then(usersArr => {
             res.render('user/community', { usersArr, error })
         })

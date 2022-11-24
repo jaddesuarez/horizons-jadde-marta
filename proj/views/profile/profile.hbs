@@ -1,132 +1,140 @@
-<h1>@{{user.username}}</h1>
-{{#if isCurrentUser}}
-<h4>This is your Profile.</h4>
-{{/if}}
-<hr>
-<div class="card mb-3" style="">
-    <div class="row g-0">
+<div class="container mt-5">
+    <h1>@{{user.username}}</h1>
+    {{#if isCurrentUser}}
+    <h4>This is your Profile.</h4>
+    {{/if}}
+    <hr>
+    <div class="d-flex align-items-center">
+
         <div class="col-md-5">
-            <div class="card-body" style="text-align: start">
-                <h5 class="card-title mb-3">{{user.name}} {{user.lastName}}</h5>
-                <p class="card-text"><strong>Username:</strong> {{user.username}}</p>
-                <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
-                <p class="card-text"><strong>Island Name:</strong> {{user.islandName}}</p>
-                <p class="card-text"><strong>Fruit:</strong> {{user.fruit}}</p>
+            <div class="card mb-3" style="width: 100%;">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        {{#if isCurrentUser}}
+                <div class="col-md-5">
+                    <div class="card-body" style="text-align: start">
+                        <h5 class="card-title mb-3">{{user.name}} {{user.lastName}}</h5>
+                        <p class="card-text"><strong>Username:</strong> {{user.username}}</p>
+                        <p class="card-text" style="white-space: nowrap;"><strong>Email:</strong> {{user.email}}</p>
+                        <p class="card-text"><strong>Island Name:</strong> {{user.islandName}}</p>
+                        <p class="card-text"><strong>Fruit:</strong> {{user.fruit}}</p>
+
+                        <div class="row">
+                            <div class="col-md-6 d-flex flex-nowrap">
+                                {{#if isCurrentUser}}
+                                <hr>
+                                <a href="/profile/{{user._id}}/edit" style="white-space: nowrap;"
+                                    class="btn btn-outline-success me-2">Edit
+                                    Profile</a>
+                                <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
+                                    <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                </form>
+                                {{/if}}
+                                {{#if isADM}}
+                                <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
+                                    <input type="submit" value="Delete" class="delete btn btn-outline-danger">
+                                </form>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 200px;" class="col-md-7 d-flex justify-content-center">
+            <img class="profile-img" src="{{user.profileImg}}" class="rounded-start" alt="profile image">
+        </div>
+    </div>
+    <hr>
+
+    {{!-- RESIDENTS --}}
+    <h3><strong>Current Villagers</strong></h3>
+    <div class="container d-flex flex-wrap justify-content-start">
+        {{#each currentVillagers}}
+        <div class="row mx-2 villager">
+            <div class="card" style="width: 10rem;">
+                <div class="col">
+                    <div class="col">
+                        <img class="card-img-top villager-image" src="{{this.image_url}}" alt="profile image">
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title h5cards">{{this.name}}</h5>
+                        <a href="/wiki/{{this.name}}" class="btn btn-primary d-grid mb-2">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <hr>
+    {{!-- FAV VILLAGERS --}}
+    <h3><strong>Favourite Villagers</strong></h3>
+    <div class="container d-flex flex-wrap justify-content-start">
+        {{#each favVillagers}}
+        <div class="row mx-2 villager">
+            <div class="card" style="width: 10rem;">
+                <div class="col">
+                    <div class="col">
+                        <img class="card-img-top p-3 villager-image" src="{{this.image_url}}" alt="profile image">
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title h5cards">{{this.name}}</h5>
+                        <a href="/wiki/{{this.name}}" class="btn btn-primary d-grid mb-2">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <hr>
+    {{!-- EVENTS --}}
+    <h3><strong>Events</strong></h3>
+    <div class="container d-flex flex-wrap justify-content-start mb-5">
+        {{#each myEvents}}
+        <div class="row mx-2">
+            <div class="card" style="width: 10rem;">
+                <div class="col">
+                    <div class="col">
+                        <img class="card-img-top p-3" src="{{this.eventImg}}" alt="event image">
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">{{this.title}}</h5>
                         <hr>
-                        <a href="/profile/{{user._id}}/edit" class="btn btn-outline-success">Edit Profile</a>
-                        <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
-                            <input type="submit" value="Delete" class="btn btn-outline-danger">
-                        </form>
-                        {{/if}}
-                        {{#if isADM}}
-                        <form action="/profile/{{user._id}}/delete" method="POST" style="display: inline">
-                            <input type="submit" value="Delete" class="delete btn btn-outline-danger">
-                        </form>
-                        {{/if}}
+                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
+                        <p class="card-text"><small
+                                class="text-muted">{{this.formattedDate.day}}/{{this.formattedDate.month}}/{{this.formattedDate.year}}</small>
+                        </p>
+                        <p class="card-text">Attendance:
+                            {{#each attendance}}
+                            <small class="text-muted">{{this.name}}| </small>
+                            {{/each}}
+                        </p>
+                        <a href="/event/{{this._id}}" class="btn btn-primary d-grid mb-2">See More</a>
+                        <div class="d-flex flex-nowrap mb-2">
+                            {{#if ../isCurrentUser}}
+                            <a href="/event/{{this._id}}/edit" class="btn btn-outline-success me-1">Edit</a>
+                            <form action="/event/{{this._id}}/delete" method="POST">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            {{/if}}
+                            {{#if ../isAdmin}}
+                            <a href="/event/{{this._id}}/edit" class="btn btn-outline-success me-1">Edit</a>
+                            <form action="/event/{{this._id}}/delete" method="POST">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            {{/if}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
-            <img src="{{user.profileImg}}" class="rounded-start" alt="profile image">
-        </div>
+        {{/each}}
     </div>
-</div>
-<hr>
-
-{{!-- RESIDENTS --}}
-<h3><strong>Current Villagers</strong></h3>
-<div class="container d-flex flex-wrap justify-content-start">
-    {{#each currentVillagers}}
-    <div class="row mx-2">
-        <div class="card" style="width: 10rem;">
-            <div class="col">
-                <div class="col">
-                    <img class="card-img-top villager-image" src="{{this.image_url}}" alt="profile image">
-                </div>
-                <div class="col">
-                    <h5 class="card-title">{{this.name}}</h5>
-                    <a href="/wiki/{{this.name}}" class="btn btn-primary d-grid mb-2">INFO</a>
-                </div>
-            </div>
-        </div>
+    {{#if isCurrentUser}}
+    <hr>
+    <div class=" mb-4">
+        <a href="/event/create" class="btn btn-primary">Create New Event</a>
     </div>
-    {{/each}}
+    {{/if}}
 </div>
-
-<hr>
-{{!-- FAV VILLAGERS --}}
-<h3><strong>Favourite Villagers</strong></h3>
-<div class="container d-flex flex-wrap justify-content-start">
-    {{#each favVillagers}}
-    <div class="row mx-2">
-        <div class="card" style="width: 10rem;">
-            <div class="col">
-                <div class="col">
-                    <img class="card-img-top p-3 villager-image" src="{{this.image_url}}" alt="profile image">
-                </div>
-                <div class="col">
-                    <h5 class="card-title">{{this.name}}</h5>
-                    <a href="/wiki/{{this.name}}" class="btn btn-primary d-grid mb-2">INFO</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{/each}}
-</div>
-
-<hr>
-{{!-- EVENTS --}}
-<h3><strong>Events</strong></h3>
-<div class="container d-flex flex-wrap justify-content-start mb-5">
-    {{#each myEvents}}
-    <div class="row mx-2">
-        <div class="card" style="width: 10rem;">
-            <div class="col">
-                <div class="col">
-                    <img class="card-img-top p-3" src="{{this.eventImg}}" alt="event image">
-                </div>
-                <div class="col">
-                    <h5 class="card-title">{{this.title}}</h5>
-                    <hr>
-                    <p class="card-text">{{this.description}}</p>
-                    <p class="card-text"><small class="text-muted">@{{this.creator.username}}</small></p>
-                    <p class="card-text"><small
-                            class="text-muted">{{this.formattedDate.day}}/{{this.formattedDate.month}}/{{this.formattedDate.year}}</small>
-                    </p>
-                    <p class="card-text">Attendance:
-                        {{#each attendance}}
-                        <small class="text-muted">{{this.name}}| </small>
-                        {{/each}}
-                    </p>
-                    <a href="/event/{{this._id}}" class="btn btn-primary d-grid mb-2">INFO</a>
-                    <div class="d-flex flex-nowrap mb-2">
-                        {{#if ../isCurrentUser}}
-                        <a href="/event/{{this._id}}/edit" class="btn btn-outline-success mr-2">Edit</a>
-                        <form action="/event/{{this._id}}/delete" method="POST">
-                            <button class="btn btn-outline-danger">Delete</button>
-                        </form>
-                        {{/if}}
-                        {{#if ../isAdmin}}
-                        <a href="/event/{{this._id}}/edit" class="btn btn-outline-success mr-2">Edit</a>
-                        <form action="/event/{{this._id}}/delete" method="POST">
-                            <button class="btn btn-outline-danger">Delete</button>
-                        </form>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{/each}}
-</div>
-{{#if isCurrentUser}}
-<hr>
-<div class=" mb-4">
-    <a href="/events/create" class="btn btn-primary">Create New Event</a>
-</div>
-{{/if}}
