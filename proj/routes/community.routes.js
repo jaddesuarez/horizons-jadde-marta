@@ -25,7 +25,8 @@ router.get("/search", (req, res, next) => {
         .find({ username })
         .then(([user]) => {
             console.log(user)
-            res.render('profile/profile', { user })
+            // res.render('profile/profile', { user })
+            res.redirect(`/profile/${user._id}`)
         })
         .catch(err => next(err))
 })

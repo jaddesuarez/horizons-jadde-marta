@@ -101,6 +101,12 @@ h1 {
   text-align: center;
 }
 
+#navbarContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
 .fossils:hover {
   transition: 0.2s ease-out;
   box-shadow: 0 0 11px #41797c;
