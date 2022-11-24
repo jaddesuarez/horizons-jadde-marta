@@ -17,21 +17,34 @@ function getcurrentVillagers(villagers, user) {
     return currentVillagers
 }
 
-function formatDate(events) {
+function formatDate(dateObj) {
+
+    const formattedDate = {
+        day: dateObj.date.getDate(),
+        month: dateObj.date.getMonth(),
+        year: dateObj.date.getFullYear()
+    }
+
+    return formattedDate
+}
+
+
+function formatEventsDate(events) {
+
     let formattedEvents = events.map(elem => {
-        formattedDate = {
-            day: elem.date.getDate(),
-            month: elem.date.getMonth(),
-            year: elem.date.getFullYear()
+        return {
+            ...elem._doc, formattedDate: formatDate(elem)
         }
-        return { ...elem._doc, formattedDate }
     })
 
     return formattedEvents
 }
 
+
+
 module.exports = {
     getfavVillagers,
     getcurrentVillagers,
-    formatDate
+    formatDate,
+    formatEventsDate
 }

@@ -1,11 +1,14 @@
 const express = require('express')
+
 const { isLoggedIn, checkEdit } = require('./../middleware/route-guard')
 const router = express.Router()
-
 const uploader = require('../config/uploader.config')
+
 const User = require('../models/User.model')
 const Event = require('../models/Event.model')
-const { getfavVillagers, getcurrentVillagers, formatDate } = require('../utils/myFunctions')
+
+const { getfavVillagers, getcurrentVillagers, formatEventsDate } = require('../utils/myFunctions')
+
 const villagersApi = require('./../services/ACNH-villages-api.service')
 const api = new villagersApi()
 
@@ -27,7 +30,7 @@ router.get('/:user_id', (req, res, next) => {
             const favVillagers = getfavVillagers(villagers, user)
             const currentVillagers = getcurrentVillagers(villagers, user)
 
-            myEvents = formatDate(events)
+            const myEvents = formatEventsDate(events)
 
             const isADM = req.session.currentUser?.role === 'ADMIN'
             const isCurrentUser = req.session.currentUser?._id === user_id

@@ -3,6 +3,15 @@
   src: url('https: //fonts.google.com/specimen/Gorditas?preview.text=animal%20crossing&preview.text_type=custom&query=gordi&category=Sans+Serif,Display,Handwriting');
 }
 
+@font-face {
+  font-family: "FinkHeavy";
+  src: url("FinkHeavy.eot");
+  src: url("FinkHeavy.woff2") format("woff2"),
+    url("FinkHeavy.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 
 body {
@@ -25,6 +34,7 @@ body {
 }
 
 h1 {
+  font-family: FinkHeavy;
   color: 15px;
 }
 
@@ -114,10 +124,8 @@ h1 {
 
 
 
-.horizons img {
-  
-} 
- 
+.horizons img {}
+
 /* .horizons h1 {
   position: absolute;
   color: white;
@@ -203,32 +211,34 @@ width: 100vh;
   background-color: #3e443a;
 }
 
-.footer a{
-  background-color:#41797c;
+.footer a {
+  background-color: #41797c;
 }
-.footer a:hover{
-  background-color:#93ad83;
+
+.footer a:hover {
+  background-color: #93ad83;
   color: white;
 }
 
 .index {
   color: white;
-    background-color: #41797c;
+  background-color: #41797c;
 }
 
 .index:hover {
-  color:white;
-  background-color:#3e443a;
+  color: white;
+  background-color: #3e443a;
 }
 
 
 .title {
   text-shadow: 2px 7px 5px rgba(95, 95, 95, 0.3),
-      0px -4px 10px rgba(255, 255, 255, 0.3);
-      transition: transform .8s;
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+  transition: transform .8s;
 }
+
 .title:hover {
-transform: scale(1.2)
+  transform: scale(1.2)
 }
 
 .still {
