@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-
-
-=======
 .img {
   width: 100%;
 }
 
-@font-face {
-  font-family: 'Gorditas';
-  src: url('https: //fonts.google.com/specimen/Gorditas?preview.text=animal%20crossing&preview.text_type=custom&query=gordi&category=Sans+Serif,Display,Handwriting');
-}
-
->>>>>>> 327b8b9523941625f3f16188903c1e01a629ebf9
 @font-face {
   font-family: "FinkHeavy";
   src: url("./../fonts/FinkHeavy.woff2") format("woff2"),
@@ -270,23 +260,12 @@ background-color: #41797c;
 
 .index {
   color: white;
-<<<<<<< HEAD
-    background-color: #41797c;
-
-}
-
-.index:hover {
-  color:white;
-  background-color:#3e443a;
- 
-=======
   background-color: #41797c;
 }
 
 .index:hover {
   color: white;
   background-color: #3e443a;
->>>>>>> 327b8b9523941625f3f16188903c1e01a629ebf9
 }
 
 .title {
