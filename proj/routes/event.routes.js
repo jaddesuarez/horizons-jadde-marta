@@ -131,9 +131,14 @@ router.get('/:event_id', (req, res, next) => {
         .then(eventFromDB => {
 
             [eventFromDB] = formatEventsDate([eventFromDB])
-            console.log(eventFromDB)
 
-            const isJoin = eventFromDB.attendance.includes(req.session.currentUser?._id)
+            let attendanceArr = eventFromDB.attendance.map(elem => {
+                return elem._id.toString()
+            })
+
+            console.log(attendanceArr)
+            const isJoin = attendanceArr.includes(req.session.currentUser?._id)
+
             res.render('event/event-details', { eventFromDB, isJoin })
         })
         .catch(err => next(err))
