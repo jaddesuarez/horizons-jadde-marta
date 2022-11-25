@@ -8,23 +8,7 @@
             <div class="col-6">
                 <div style="margin-left: 20px;">
 
-<<<<<<< HEAD
-            <h1 class="top">{{title}}</h1>
-        
-            <h5 class="mt-3">{{description}}</h5>
-            <h6 class="mt-4"><strong>Event creator:</strong> <a class='linkuser'href="/profile/{{creator._id}}">@{{creator.username}}</a></h6>
-            <p class="mt-3"><strong>Date:</strong> {{formattedDate.day}}/{{formattedDate.month}}/{{formattedDate.year}}</p>
-            <p class="mt-2"><strong>Island:</strong> {{creator.islandName}}</p>
-            <p><strong>Attendance:</strong>
-{{#each attendance}}
-<span>{{this.name}} |</span>
-{{/each}}
-            </p>
-
-            <hr>
-=======
                     <h1 class="top">{{eventFromDB.title}}</h1>
->>>>>>> 3fbd38d46a45b48df154de5d5762e21cc7c50829
 
                     <h5 class="mt-3">{{eventFromDB.description}}</h5>
                     <h6 class="mt-4"><strong>Event creator:</strong> <a class='linkuser'
